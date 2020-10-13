@@ -11,3 +11,16 @@ D:\CSharp\2. LineFormat\HomeWork2\HomeWork2\obj\Debug\netcoreapp3.1\HomeWork2.cs
 D:\CSharp\2. LineFormat\HomeWork2\HomeWork2\obj\Debug\netcoreapp3.1\HomeWork2.dll
 D:\CSharp\2. LineFormat\HomeWork2\HomeWork2\obj\Debug\netcoreapp3.1\HomeWork2.pdb
 D:\CSharp\2. LineFormat\HomeWork2\HomeWork2\obj\Debug\netcoreapp3.1\HomeWork2.genruntimeconfig.cache
+D:\Git\Skillbox_CSharp\2. LineFormat\bin\Debug\netcoreapp3.1\HomeWork2.exe
+D:\Git\Skillbox_CSharp\2. LineFormat\bin\Debug\netcoreapp3.1\HomeWork2.deps.json
+D:\Git\Skillbox_CSharp\2. LineFormat\bin\Debug\netcoreapp3.1\HomeWork2.runtimeconfig.json
+D:\Git\Skillbox_CSharp\2. LineFormat\bin\Debug\netcoreapp3.1\HomeWork2.runtimeconfig.dev.json
+D:\Git\Skillbox_CSharp\2. LineFormat\bin\Debug\netcoreapp3.1\HomeWork2.dll
+D:\Git\Skillbox_CSharp\2. LineFormat\bin\Debug\netcoreapp3.1\HomeWork2.pdb
+D:\Git\Skillbox_CSharp\2. LineFormat\obj\Debug\netcoreapp3.1\HomeWork2.csprojAssemblyReference.cache
+D:\Git\Skillbox_CSharp\2. LineFormat\obj\Debug\netcoreapp3.1\HomeWork2.AssemblyInfoInputs.cache
+D:\Git\Skillbox_CSharp\2. LineFormat\obj\Debug\netcoreapp3.1\HomeWork2.AssemblyInfo.cs
+D:\Git\Skillbox_CSharp\2. LineFormat\obj\Debug\netcoreapp3.1\HomeWork2.csproj.CoreCompileInputs.cache
+D:\Git\Skillbox_CSharp\2. LineFormat\obj\Debug\netcoreapp3.1\HomeWork2.dll
+D:\Git\Skillbox_CSharp\2. LineFormat\obj\Debug\netcoreapp3.1\HomeWork2.pdb
+D:\Git\Skillbox_CSharp\2. LineFormat\obj\Debug\netcoreapp3.1\HomeWork2.genruntimeconfig.cache

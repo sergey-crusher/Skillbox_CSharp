@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Git\\Skillbox_CSharp\\2. LineFormat\\HomeWork2\\HomeWork2\\HomeWork2.csproj": {}
+    "D:\\Git\\Skillbox_CSharp\\2. LineFormat\\HomeWork2.csproj": {}
   },
   "projects": {
-    "D:\\Git\\Skillbox_CSharp\\2. LineFormat\\HomeWork2\\HomeWork2\\HomeWork2.csproj": {
+    "D:\\Git\\Skillbox_CSharp\\2. LineFormat\\HomeWork2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Git\\Skillbox_CSharp\\2. LineFormat\\HomeWork2\\HomeWork2\\HomeWork2.csproj",
+        "projectUniqueName": "D:\\Git\\Skillbox_CSharp\\2. LineFormat\\HomeWork2.csproj",
         "projectName": "HomeWork2",
-        "projectPath": "D:\\Git\\Skillbox_CSharp\\2. LineFormat\\HomeWork2\\HomeWork2\\HomeWork2.csproj",
+        "projectPath": "D:\\Git\\Skillbox_CSharp\\2. LineFormat\\HomeWork2.csproj",
         "packagesPath": "C:\\Users\\serge\\.nuget\\packages\\",
-        "outputPath": "D:\\Git\\Skillbox_CSharp\\2. LineFormat\\HomeWork2\\HomeWork2\\obj\\",
+        "outputPath": "D:\\Git\\Skillbox_CSharp\\2. LineFormat\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\serge\\AppData\\Roaming\\NuGet\\NuGet.Config",
