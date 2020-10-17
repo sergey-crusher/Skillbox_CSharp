@@ -1,0 +1,7 @@
+D:\Git\Skillbox_CSharp\3. MathGame\bin\Debug\MathGame.exe.config
+D:\Git\Skillbox_CSharp\3. MathGame\bin\Debug\MathGame.exe
+D:\Git\Skillbox_CSharp\3. MathGame\bin\Debug\MathGame.pdb
+D:\Git\Skillbox_CSharp\3. MathGame\obj\Debug\MathGame.csprojAssemblyReference.cache
+D:\Git\Skillbox_CSharp\3. MathGame\obj\Debug\MathGame.csproj.CoreCompileInputs.cache
+D:\Git\Skillbox_CSharp\3. MathGame\obj\Debug\MathGame.exe
+D:\Git\Skillbox_CSharp\3. MathGame\obj\Debug\MathGame.pdb
