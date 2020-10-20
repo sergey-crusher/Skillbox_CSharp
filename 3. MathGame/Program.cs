@@ -4,25 +4,49 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.Collections.ObjectModel;
+using System.Diagnostics;
+using System.Reflection;
 
 namespace MathGame
 {
     class Program
     {
-        /// <summary>
-        /// Возвращает игрока отличного от activPlayer (меняет активного)
-        /// </summary>
-        /// <param name="activPlayer"></param>
-        /// <param name="player1"></param>
-        /// <param name="player2"></param>
-        /// <returns></returns>
-        static string changePlayer(string activPlayer, string player1, string player2)
+        public static player Activ (List<player> players)
         {
-            if (activPlayer == player1)
-                activPlayer = player2;
-            else
-                activPlayer = player1;
-            return activPlayer;
+            foreach (var player in players)
+                if (player.activ)
+                    return player;
+            return null;
+        }
+        /// <summary>
+        /// Переключение игрока на следующего (при неограниченном количестве игроков)
+        /// </summary>
+        /// <param name="players"></param>
+        /// <returns></returns>
+        public static List<player> Next (List<player> players)
+        {
+            for (int i = 0; i < players.Count; i++)
+            {
+                if (players[i].activ)
+                {
+                    players[i].activ = false;
+                    if (i + 1 >= players.Count)
+                        players[0].activ = true;
+                    else
+                        players[i + 1].activ = true;
+                    break;
+                }
+            }
+            return players;
+        }
+        /// <summary>
+        /// Класс игрока(никнейм, право хода)
+        /// </summary>
+        public class player
+        {
+            public string nickname;
+            public bool activ;
         }
 
         static void Main(string[] args)
@@ -30,173 +54,159 @@ namespace MathGame
             while (true)
             {
                 //Режим игры
-                string gameMode = ""; //1 - два игрока; 2 - NPC
-                                      //Никнеймы игроков
-                string player1 = "";
-                string player2 = "";
-                //Проверка первый ли игрок
-                string activPlayer = "";
+                string gameMode = ""; //1 - несколько игроков; 2 - NPC
+                string difficultyLevel = ""; //1 - простой; 2 - сложный
+                //Объявляем игроков
+                List<player> Players = new List<player>();
+                //Количество игроков
+                int countPlayer = 0;
                 //Случайное число от 12 до 120
                 int gameNumber = 0;
                 //Выбор игрока
                 int userTry = 0;
                 //Возможные значения
                 int[] permitted = new int[] { 1, 2, 3, 4 };
+                //Приветсвие игрока
+                string helloPlayer = "";
 
-                Console.WriteLine("Выбор режима:\r\n1 - два игрока\r\n2 - NPC");
+                Console.WriteLine("Выбор режима:\r\n1 - несколько игроков\r\n2 - NPC");
                 gameMode = Console.ReadLine();
 
                 Random rnd = new Random();
                 gameNumber = rnd.Next(12, 120);
 
-                //РЕЖИМ ДВУХ ИГРОКОВ
-                if (gameMode == "1")
+                //ЦИКЛ ИГРЫ
+                while (gameNumber > 0)
                 {
-                    //Приветсвие игроков
-                    Console.WriteLine("Первый игрок - введите ваш никнейм");
-                    player1 = Console.ReadLine();
-                    Console.WriteLine("Второй игрок - введите ваш никнейм");
-                    activPlayer = player2 = Console.ReadLine();
-                    Console.WriteLine($"{player1} и {player2} добро пожаловать в удивительный Мир Математики, " +
-                        $"где вам предстоит решить не простую задачку, победит тот кто первым обнулит " +
-                        $"игровое число(ИЧ), отнимая от 1 до 4, но победит лишь один, желаю удачи");
-                    while (gameNumber > 0)
+                    //ПЕРВОНАЧАЛЬНАЯ НАСТРОЙКА ИГРЫ
+                    //ВЫБИРАЕМ РЕЖИМ ИГРЫ
+                    //Несколько игроков
+                    if (gameMode == "1")
                     {
-                        activPlayer = changePlayer(activPlayer, player1, player2);
+                        if (countPlayer == 0)
+                        {
+                            //Определяем количество игроков
+                            Console.WriteLine("Сколько игроков будет играть?\r\nВведите число от 2 до бесконечности");
+                            try
+                            {
+                                countPlayer = int.Parse(Console.ReadLine());
+                                if (countPlayer < 2)
+                                {
+                                    Console.WriteLine("Выберите больше одного игрока");
+                                    continue;
+                                }
+                            }
+                            catch
+                            {
+                                Console.WriteLine("Количество игроков введено не корректно");
+                                continue;
+                            }
+                            for (int i = 0; i < countPlayer; i++)
+                            {
+                                Players.Add(new player());
+                            }
+                            Players[countPlayer-1].activ = true;
 
-                        Console.WriteLine($"ИЧ = {gameNumber}, {activPlayer} ваш ход");
-                        //Обработка введённого числа
-                        try
-                        {
-                            userTry = int.Parse(Console.ReadLine());
-                            if (Array.IndexOf(permitted, userTry) < 0)
+                            //Вводим никнеймы всем игрокам
+                            for (int i = 0; i < countPlayer; i++)
                             {
-                                throw new Exception("Выход из диапазона чисел");
+                                Console.WriteLine($"Введите имя для игрока №{i + 1} из {Players.Count}");
+                                Players[i].nickname = Console.ReadLine();
+                                helloPlayer += Players[i].nickname + ", ";
                             }
-                            gameNumber -= userTry;
-                        }
-                        catch
-                        {
-                            activPlayer = changePlayer(activPlayer, player1, player2);
-                            Console.WriteLine("Введите числовое значение от 1 до 4");
+                            helloPlayer = helloPlayer.Substring(0, helloPlayer.Length - 2);
                         }
                     }
-                    Console.WriteLine($"{activPlayer} ПОЗДРАВЛЯЕМ С ГРАНДИОЗНОЙ ПОБЕДОЙ!!!\r\nЖелаете ещё разок?");
-                }
-                //РЕЖИМ NPC
-                else if (gameMode == "2")
-                {
-                    Console.WriteLine("Введите свой никнейм");
-                    player1 = Console.ReadLine();
-                    Console.WriteLine("Раз вы такой смелый, выберите уровень сложности:\r\n" +
-                        "1 - для слабаков\r\n" +
-                        "2 - для истинных профи");
-                    string difficultyLevel = Console.ReadLine();
-                    //ВЫБОР УРОВНЯ СЛОЖНОСТИ
-                    if (difficultyLevel == "1")
+                    //NPC
+                    else if (gameMode == "2")
                     {
-                        player2 = "Сергей Слабачков";
-                        Console.WriteLine($"Теперь твой противник {player2}, проиграть = позор");
-                        while (gameNumber > 0)
+                        if (userTry == 0)
                         {
-                            activPlayer = changePlayer(activPlayer, player1, player2);
-                            if (activPlayer == player1)
-                            {
-                                Console.WriteLine($"ИЧ = {gameNumber}, {player1} ваш ход");
-                                //Обработка введённого числа
-                                try
-                                {
-                                    userTry = int.Parse(Console.ReadLine());
-                                    if (Array.IndexOf(permitted, userTry) < 0)
-                                    {
-                                        throw new Exception("Выход из диапазона чисел");
-                                    }
-                                    gameNumber -= userTry;
-                                }
-                                catch
-                                {
-                                    activPlayer = changePlayer(activPlayer, player1, player2);
-                                    Console.WriteLine("Введите числовое значение от 1 до 4");
-                                }
-                            }
-                            else
-                            {
-                                Console.WriteLine($"ИЧ = {gameNumber}, ходит {player2}");
-                                userTry = rnd.Next(1, 5);
-                                gameNumber -= userTry;
-                                Console.WriteLine(userTry);
-                            }
+                            Players.Add(new player());
+                            Players[0].activ = true;
+                            Console.WriteLine("Введите имя для игрока");
+                            helloPlayer = Players[0].nickname = Console.ReadLine();
+
+                            //ВЫБОР УРОВНЯ СЛОЖНОСТИ
+                            Console.WriteLine("Выберите уровень сложности:\r\n" +
+                                "1 - простой\r\n" +
+                                "2 - сложный");
+                            difficultyLevel = Console.ReadLine();
+                            if (difficultyLevel != "1" && difficultyLevel != "2")
+                                continue;
                         }
-                        if (activPlayer == player1)
-                            Console.WriteLine($"{player1} ну типо молодец...\r\nЖелаете ещё разок?");
-                        else
-                            Console.WriteLine($"{player2} всухую уделал тебя\r\nЕщё разок?");
                     }
-                    else if (difficultyLevel == "2")
+                    else
+                        continue;
+
+                    //ПРИВЕТСТВИЕ
+                    if (helloPlayer != "")
                     {
-                        player2 = "Сергей СОКРУШИТЕЛЬ!";
-                        Console.WriteLine($"Теперь твой противник {player2}, желаю удачи, она тебе пригодится");
-                        while (gameNumber > 0)
-                        {
-                            activPlayer = changePlayer(activPlayer, player1, player2);
-                            if (activPlayer == player1)
-                            {
-                                Console.WriteLine($"ИЧ = {gameNumber}, {player1} ваш ход");
-                                //Обработка введённого числа
-                                try
-                                {
-                                    userTry = int.Parse(Console.ReadLine());
-                                    if (Array.IndexOf(permitted, userTry) < 0)
-                                    {
-                                        throw new Exception("Выход из диапазона чисел");
-                                    }
-                                    gameNumber -= userTry;
-                                }
-                                catch
-                                {
-                                    activPlayer = changePlayer(activPlayer, player1, player2);
-                                    Console.WriteLine("Введите числовое значение от 1 до 4");
-                                }
-                            }
-                            else
-                            {
-                                Console.WriteLine($"ИЧ = {gameNumber}, ходит {player2}");
-                                if (gameNumber > 8)
-                                {
-                                    userTry = rnd.Next(1, 5);
-                                    gameNumber -= userTry;
-                                }
-                                else
-                                {
-                                    //НЕБОЛЬШОЙ АНАЛИЗ ПЕРЕД ФИНАЛОМ
-                                    if (gameNumber > 4 && gameNumber <= 8)
-                                    {
-                                        userTry = 1;
-                                        gameNumber -= userTry;
-                                    }
-                                    else
-                                    {
-                                        userTry = 4;
-                                        gameNumber -= userTry;
-                                    }
-                                }
-                                Console.WriteLine(userTry);
-                            }
-                        }
-                        if (activPlayer == player1)
-                            Console.WriteLine($"{player1} это было сильно!\r\nЖелаете ещё разок?");
-                        else
-                            Console.WriteLine($"{player2} всухую уделал тебя\r\nЕщё разок?");
+                        Console.WriteLine($"{helloPlayer} добро пожаловать " +
+                            $"в математическую баталию");
+                        helloPlayer = "";
+                    }
+
+                    //ОТРАБОТКА ПО РЕЖИМУ С ИГРОКАМИ
+                    if (gameMode == "1")
+                    {
+                        Next(Players);
                     }
                     else
                     {
-                        Console.WriteLine("Испугался и выбрал что-то другое? Будь мужиком! Выбери хардкор, нажми 2");
+                        //ОСНОВНОЙ АЛГОРИМ NPC
+                        Console.WriteLine($"Текущее значение игрового числа {gameNumber}");
+                        userTry = rnd.Next(1, 5);
+                        Console.WriteLine($"Ход компьютера {userTry}");
+
+                        //МЕНЯЕМ АЛГОРИМТ ДЛЯ ПОВЫШЕННОГО УРОВНЯ СЛОЖНОСТИ
+                        if (difficultyLevel == "2")
+                        {
+                            if (gameNumber <= 8)
+                            {
+                                //НЕБОЛЬШОЙ АНАЛИЗ ПЕРЕД ФИНАЛОМ
+                                if (gameNumber > 4 && gameNumber <= 8)
+                                {
+                                    userTry = 1;
+                                }
+                                else
+                                {
+                                    userTry = 4;
+                                }
+                            }
+                        }
+                        gameNumber -= userTry;
+                        if (gameNumber <= 0)
+                        {
+                            Console.WriteLine("Компьютер одержал победу\r\nЧтобы повторить игру, нажмите любую клавишу");
+                            continue;
+                        }
                     }
+
+                    //ДУША И СЕРДЦЕ ИГРЫ
+                    Console.WriteLine($"Текущее значение игрового числа {gameNumber}");
+                    Console.WriteLine($"Ход игрока {Activ(Players).nickname}, введите число от 1 до 4");
+                    try
+                    {
+                        //Ввод игрового числа
+                        userTry = int.Parse(Console.ReadLine());
+                        if (Array.IndexOf(permitted,userTry)<0)
+                        {
+                            Console.WriteLine("Число выходит из диапазона");
+                            continue;
+                        }
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Ошибка при вводе игрового числа");
+                        continue;
+                    }
+                    gameNumber -= userTry;
+
+                    if (gameNumber <= 0)
+                        Console.WriteLine($"{Activ(Players).nickname} одержал победу\r\nЧтобы повторить игру, нажмите любую клавишу");
                 }
-                else
-                {
-                    Console.WriteLine("Уважаемый, будьте любезны выбрать одно из двух");
-                }
+
                 Console.ReadKey();
             }
         }
