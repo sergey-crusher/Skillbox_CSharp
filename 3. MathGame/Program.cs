@@ -152,7 +152,7 @@ namespace MathGame
                     {
                         Next(Players);
                     }
-                    else
+                    else if (userTry != -1)
                     {
                         //ОСНОВНОЙ АЛГОРИМ NPC
                         Console.WriteLine($"Текущее значение игрового числа {gameNumber}");
@@ -193,7 +193,7 @@ namespace MathGame
                         if (Array.IndexOf(permitted,userTry)<0)
                         {
                             Console.WriteLine("Число выходит из диапазона");
-                            userTry = 1; //
+                            userTry = -1; //
                             continue;
                         }
                     }
