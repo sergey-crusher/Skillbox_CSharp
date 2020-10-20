@@ -193,6 +193,7 @@ namespace MathGame
                         if (Array.IndexOf(permitted,userTry)<0)
                         {
                             Console.WriteLine("Число выходит из диапазона");
+                            userTry = 1; //
                             continue;
                         }
                     }
