@@ -200,6 +200,7 @@ namespace MathGame
                     catch
                     {
                         Console.WriteLine("Ошибка при вводе игрового числа");
+                        userTry = -1; //
                         continue;
                     }
                     gameNumber -= userTry;
