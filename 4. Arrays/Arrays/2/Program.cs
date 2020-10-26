@@ -8,8 +8,34 @@ namespace _2
 {
     class Program
     {
+        static decimal Factorial(decimal x)
+        {
+            if (x == 0)
+            {
+                return 1;
+            }
+            else
+            {
+                return x * Factorial(x - 1);
+            }
+        }
+
         static void Main(string[] args)
         {
+            decimal n = decimal.Parse(Console.ReadLine());
+            string str = "";
+            for (decimal i = 0; i <= n; i++)  
+            {
+                for (decimal j = 0; j <= i; j++)
+                {
+                    str += $"{String.Format("{0,8}",(Factorial(i) / (Factorial(j) * Factorial(i - j))))}";
+                }
+                int centerX = Math.Abs((Console.WindowWidth / 2) - (str.Length / 2));
+                Console.SetCursorPosition(centerX, Console.CursorTop);
+                Console.WriteLine(str);
+                str = "";
+            }
+            Console.ReadKey();
         }
     }
 }

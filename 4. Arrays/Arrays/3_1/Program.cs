@@ -10,6 +10,15 @@ namespace _3_1
     {
         static void Main(string[] args)
         {
+            int number = 5;
+            int[,] matrix = new int[3, 3]
+                {
+                    { 1, 3, 5 },
+                    { 4, 5, 7 },
+                    { 5, 3, 1 }
+                }
+                ;
+
         }
     }
 }
