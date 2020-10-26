@@ -1,6 +1,0 @@
-D:\Git\Skillbox_CSharp\4. Arrays\Arrays\Arrays\bin\Debug\Arrays.exe.config
-D:\Git\Skillbox_CSharp\4. Arrays\Arrays\Arrays\bin\Debug\Arrays.exe
-D:\Git\Skillbox_CSharp\4. Arrays\Arrays\Arrays\bin\Debug\Arrays.pdb
-D:\Git\Skillbox_CSharp\4. Arrays\Arrays\Arrays\obj\Debug\1.csproj.CoreCompileInputs.cache
-D:\Git\Skillbox_CSharp\4. Arrays\Arrays\Arrays\obj\Debug\Arrays.exe
-D:\Git\Skillbox_CSharp\4. Arrays\Arrays\Arrays\obj\Debug\Arrays.pdb

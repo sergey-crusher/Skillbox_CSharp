@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30523.141
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1", "Arrays\1.csproj", "{CDF226B6-3F05-4B4B-98A3-333CFF140B18}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1", "1\1.csproj", "{CDF226B6-3F05-4B4B-98A3-333CFF140B18}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2", "2\2.csproj", "{4837EDF9-8C6F-42BB-8A83-48AC508C1550}"
 EndProject
@@ -44,6 +44,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {A2B74F70-146A-4A90-97D9-8ADDEB0E53D4}
+		SolutionGuid = {7ABA6D96-3E22-4DED-A4C3-BBF767DE56AA}
 	EndGlobalSection
 EndGlobal
