@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace _3_1
 {
@@ -10,15 +11,50 @@ namespace _3_1
     {
         static void Main(string[] args)
         {
-            int number = 5;
-            int[,] matrix = new int[3, 3]
-                {
-                    { 1, 3, 5 },
-                    { 4, 5, 7 },
-                    { 5, 3, 1 }
-                }
-                ;
+            Console.WriteLine("Укажите множитель матрицы");
+            int number = int.Parse(Console.ReadLine());                                         //множитель //5
+            Console.WriteLine("Количество колонок");
+            int y = int.Parse(Console.ReadLine());                                              //размерность по Y //3
+            Console.WriteLine("Количество строк");
+            int x = int.Parse(Console.ReadLine());                                              //размерность по X //3
+            int[,] matrix = new int[x, y];                                                      //матрица
+            int maxMatrix = 0;                                                                  //максимальное значение
+            Random rnd = new Random();                                                          //генератор рандома
 
+            //Наполняем матрицу
+            for (int i = 0; i < x; i++)
+            {
+                for (int j = 0; j < y; j++)
+                {
+                    int temp = rnd.Next(0, 100);
+                    matrix[i, j] = temp;
+                    if (maxMatrix < temp)                                                       //находим максимальное значение
+                        maxMatrix = temp;
+                }
+            }
+
+            maxMatrix = (maxMatrix * number).ToString().Length;                                 //максимальная длина числа
+
+            for (int i=0; i<x; i++)
+            {
+                string row = "";                                                                //наполнем строку
+                string rowRes = "";                                                             //наполнем строку результата
+                if (i == x / 2)
+                    row += number + " x | ";
+                else
+                    row += row.PadLeft(number.ToString().Length + 2, ' ') + " | ";
+                for (int j=0; j<y; j++)
+                {
+                    row += (matrix[i, j]).ToString().PadLeft(maxMatrix, ' ') + " ";
+                    rowRes += (number * matrix[i, j]).ToString().PadLeft(maxMatrix, ' ') + " ";
+                }
+                if (i == x / 2)
+                    row += "| = ";
+                else
+                    row += "|   ";
+                Console.WriteLine($"{row}|{rowRes}|");
+            }
+            Console.ReadKey();
         }
     }
 }

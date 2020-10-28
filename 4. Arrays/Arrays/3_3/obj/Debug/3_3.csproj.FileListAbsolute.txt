@@ -1,0 +1,7 @@
+D:\Git\Skillbox_CSharp\4. Arrays\Arrays\3_3\bin\Debug\3_3.exe.config
+D:\Git\Skillbox_CSharp\4. Arrays\Arrays\3_3\bin\Debug\3_3.exe
+D:\Git\Skillbox_CSharp\4. Arrays\Arrays\3_3\bin\Debug\3_3.pdb
+D:\Git\Skillbox_CSharp\4. Arrays\Arrays\3_3\obj\Debug\3_3.csprojAssemblyReference.cache
+D:\Git\Skillbox_CSharp\4. Arrays\Arrays\3_3\obj\Debug\3_3.csproj.CoreCompileInputs.cache
+D:\Git\Skillbox_CSharp\4. Arrays\Arrays\3_3\obj\Debug\3_3.exe
+D:\Git\Skillbox_CSharp\4. Arrays\Arrays\3_3\obj\Debug\3_3.pdb

@@ -54,20 +54,15 @@ namespace _1
             //Пробегаемся по массивам
             for (int i = 0; i < fin.DT.Length; i++)
             {
-                /* 
-                 * Возможно ли было как-то вывести что-то вроде
-                 * Console.Write($"{0,columnHeaders[0].Length}", i+1);
-                 * Чтобы вручную не считать количество символов или как можно по другому красиво вывести столбцы
-                 */
                 Console.WriteLine();
-                Console.Write("{0,5}", i+1);
-                Console.Write("{0,18}", fin.DT[i].ToString("### ###"));
-                Console.Write("{0,19}", fin.KT[i].ToString("### ###"));
+                Console.Write((i+1).ToString().PadLeft(columnHeaders[0].Length, ' '));
+                Console.Write(fin.DT[i].ToString("### ###").PadLeft(columnHeaders[1].Length+2, ' '));
+                Console.Write("{0,19}", fin.KT[i].ToString("### ###").PadLeft(columnHeaders[2].Length+2, ' '));
                 fin.profit[i] = fin.DT[i] - fin.KT[i];
                 if (fin.profit[i] == 0)
-                    Console.Write("{0,20}","0");
+                    Console.Write("0".PadLeft(columnHeaders[3].Length, ' '));
                 else
-                    Console.Write("{0,20}", fin.profit[i].ToString("### ###"));
+                    Console.Write(fin.profit[i].ToString("### ###").PadLeft(columnHeaders[3].Length+2, ' '));
             }
 
             float[] threeWorst = new float[12];                                             //Создаём массив для трех наихудших значений

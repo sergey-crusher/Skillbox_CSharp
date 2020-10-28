@@ -22,13 +22,15 @@ namespace _2
 
         static void Main(string[] args)
         {
+            Console.WriteLine("Введите число от 1 до 25");
             decimal n = decimal.Parse(Console.ReadLine());
             string str = "";
+            int max = ((Factorial(n) / (Factorial((int)n/2) * Factorial(n - (int)n/2)))).ToString().Length+1;
             for (decimal i = 0; i <= n; i++)  
             {
                 for (decimal j = 0; j <= i; j++)
                 {
-                    str += $"{String.Format("{0,8}",(Factorial(i) / (Factorial(j) * Factorial(i - j))))}";
+                    str += $"{(Factorial(i) / (Factorial(j) * Factorial(i - j))).ToString().PadLeft(max, ' ')}";
                 }
                 int centerX = Math.Abs((Console.WindowWidth / 2) - (str.Length / 2));
                 Console.SetCursorPosition(centerX, Console.CursorTop);
