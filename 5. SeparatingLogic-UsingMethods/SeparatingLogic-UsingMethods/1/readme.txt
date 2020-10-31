@@ -1,0 +1,1 @@
+![Image alt](https://github.com/sergey-crusher/Skillbox_CSharp/5. SeparatingLogic-UsingMethods/SeparatingLogic-UsingMethods/result.JPG)
