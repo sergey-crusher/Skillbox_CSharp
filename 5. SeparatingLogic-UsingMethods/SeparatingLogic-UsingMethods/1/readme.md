@@ -4,4 +4,4 @@
 1.2. Создать метод, принимающий две матрицу, возвращающий их сумму
 1.3. Создать метод, принимающий две матрицу, возвращающий их произведение
 
-![Image alt](https://github.com/sergey-crusher/Skillbox_CSharp/blob/master/5.%20SeparatingLogic-UsingMethods/SeparatingLogic-UsingMethods/1/result.JPG)
+![Image alt](https://github.com/sergey-crusher/Skillbox_CSharp/blob/master/5.%20SeparatingLogic-UsingMethods/SeparatingLogic-UsingMethods/1/result.JPG) 
