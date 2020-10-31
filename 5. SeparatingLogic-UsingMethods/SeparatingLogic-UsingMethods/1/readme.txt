@@ -1,1 +1,1 @@
-![Image alt](https://github.com/sergey-crusher/Skillbox_CSharp/5. SeparatingLogic-UsingMethods/SeparatingLogic-UsingMethods/result.JPG)
+![Image alt](https://github.com/sergey-crusher/Skillbox_CSharp/blob/master/5.%20SeparatingLogic-UsingMethods/SeparatingLogic-UsingMethods/1/result.JPG)
