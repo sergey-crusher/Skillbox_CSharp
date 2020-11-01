@@ -8,8 +8,71 @@ namespace _2
 {
     class Program_2
     {
+        /// <summary>
+        /// Вывод самого короткого слова
+        /// </summary>
+        /// <param name="str">Принимаемая строка</param>
+        /// <returns></returns>
+        static string MinChar (string str)
+        {
+            string[] arr;                                                                   //массив элементов строки
+            arr = str.Split(' ');                                                           //преобразование строки в массив
+
+            int min = int.MaxValue;                                                         //минимальная длина
+            int index = 0;
+
+            //Нахождение самого короткого элемента массива
+            for (int i = 0; i < arr.Length; i++)
+            {
+                if (arr[i].Length < min)
+                {
+                    min = arr[i].Length;
+                    index = i;
+                }
+            }
+            return arr[index];
+        }
+
+        /// <summary>
+        /// Вывод всех самых длинных слов
+        /// </summary>
+        /// <param name="str">Принимаемая строка</param>
+        /// <returns></returns>
+        static string MaxChar(string str)
+        {
+            string[] arr;                                                                   //массив элементов строки
+            arr = str.Split(' ');                                                           //преобразование строки в массив
+
+            int max = 0;                                                                    //максимальная длина
+            int[] index;
+
+            //Нахождение самого большего элемента массива
+            for (int i = 0; i < arr.Length; i++)
+            {
+                if (arr[i].Length > max)
+                {
+                    max = arr[i].Length;
+                }
+            }
+
+            str = "";                                                                       //опустощаем строку
+
+            foreach (var item in arr)
+            {
+                if (item.Length == max)
+                {
+                    str += item + " ";
+                }
+            }
+            return str;
+        }
+
         static void Main(string[] args)
         {
+            string str = "AА ББ ВВВ ГГГГ ДДДД Д ЕЕ ЖЖ ЗЗЗ";
+            Console.WriteLine(MinChar(str));
+            Console.WriteLine(MaxChar(str));
+            Console.ReadKey();
         }
     }
 }
