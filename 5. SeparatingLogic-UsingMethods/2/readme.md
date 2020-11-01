@@ -8,4 +8,4 @@
 2. ГГГГ, ДДДД
 
 
-![Image alt](https://github.com/sergey-crusher/Skillbox_CSharp/blob/master/5.%20SeparatingLogic-UsingMethods/SeparatingLogic-UsingMethods/2/result.JPG) 
+![Image alt](https://github.com/sergey-crusher/Skillbox_CSharp/blob/master/5.%20SeparatingLogic-UsingMethods/2/result.JPG) 
