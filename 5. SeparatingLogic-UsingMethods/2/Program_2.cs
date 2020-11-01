@@ -16,7 +16,8 @@ namespace _2
         static string MinChar (string str)
         {
             string[] arr;                                                                   //массив элементов строки
-            arr = str.Split(' ');                                                           //преобразование строки в массив
+            arr = str.Split(new char[] { ' ', ',' },
+                StringSplitOptions.RemoveEmptyEntries);                                     //преобразование строки в массив
 
             int min = int.MaxValue;                                                         //минимальная длина
             int index = 0;
@@ -41,7 +42,8 @@ namespace _2
         static string MaxChar(string str)
         {
             string[] arr;                                                                   //массив элементов строки
-            arr = str.Split(' ');                                                           //преобразование строки в массив
+            arr = str.Split(new char[] { ' ', ',' }, 
+                StringSplitOptions.RemoveEmptyEntries);                                     //преобразование строки в массив
 
             int max = 0;                                                                    //максимальная длина
 
@@ -69,7 +71,7 @@ namespace _2
 
         static void Main(string[] args)
         {
-            string str = "Hello hello hello how low";
+            string str = "Hello, hello, hello,  how low";
             Console.WriteLine("Первоначальная строка:");
             Console.WriteLine(str);
             Console.WriteLine("Первое самое короткое слово:");
