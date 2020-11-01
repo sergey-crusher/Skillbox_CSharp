@@ -8,6 +8,12 @@ namespace _3
 {
     class Program_3
     {
+        static string ExtraChar (string str)
+        {
+
+            return str;
+        }
+
         static void Main(string[] args)
         {
         }

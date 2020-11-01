@@ -21,7 +21,7 @@ namespace _2
             int min = int.MaxValue;                                                         //минимальная длина
             int index = 0;
 
-            //Нахождение самого короткого элемента массива
+            //Нахождение (первого) самого короткого элемента массива 
             for (int i = 0; i < arr.Length; i++)
             {
                 if (arr[i].Length < min)
@@ -44,7 +44,6 @@ namespace _2
             arr = str.Split(' ');                                                           //преобразование строки в массив
 
             int max = 0;                                                                    //максимальная длина
-            int[] index;
 
             //Нахождение самого большего элемента массива
             for (int i = 0; i < arr.Length; i++)
@@ -57,6 +56,7 @@ namespace _2
 
             str = "";                                                                       //опустощаем строку
 
+            //Формирование строки с самыми длинными словами
             foreach (var item in arr)
             {
                 if (item.Length == max)
@@ -69,8 +69,12 @@ namespace _2
 
         static void Main(string[] args)
         {
-            string str = "AА ББ ВВВ ГГГГ ДДДД Д ЕЕ ЖЖ ЗЗЗ";
+            string str = "Hello hello hello how low";
+            Console.WriteLine("Первоначальная строка:");
+            Console.WriteLine(str);
+            Console.WriteLine("Первое самое короткое слово:");
             Console.WriteLine(MinChar(str));
+            Console.WriteLine("Все самые длинные слова:");
             Console.WriteLine(MaxChar(str));
             Console.ReadKey();
         }
