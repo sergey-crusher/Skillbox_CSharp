@@ -15,17 +15,20 @@ namespace _1
         /// <param name="matrix"></param>
         static void PrintMatrix (int[,] matrix)
         {
-            int maxMatrix = matrix.Cast<int>().Max();                                           //максимальное значение
-            maxMatrix = (maxMatrix).ToString().Length;                                          //максимальная длина числа
-
-            for (int i = 0; i < matrix.GetLength(0); i++)
+            if (matrix != null)
             {
-                Console.Write("| ");
-                for (int j = 0; j < matrix.GetLength(1); j++)
+                int maxMatrix = matrix.Cast<int>().Max();                                           //максимальное значение
+                maxMatrix = (maxMatrix).ToString().Length;                                          //максимальная длина числа
+
+                for (int i = 0; i < matrix.GetLength(0); i++)
                 {
-                    Console.Write(matrix[i,j].ToString().PadLeft(maxMatrix) + " ");
+                    Console.Write("| ");
+                    for (int j = 0; j < matrix.GetLength(1); j++)
+                    {
+                        Console.Write(matrix[i, j].ToString().PadLeft(maxMatrix) + " ");
+                    }
+                    Console.WriteLine("|");
                 }
-                Console.WriteLine("|");
             }
         }
 
