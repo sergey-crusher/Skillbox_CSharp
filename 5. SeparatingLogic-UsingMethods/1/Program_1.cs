@@ -3,225 +3,150 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace _1
 {
     class Program
     {
         /// <summary>
-        /// Матрица умноженная на число
+        /// Вывод матрицы
         /// </summary>
-        /// <param name="number">Число на которое будет умножаться матрица</param>
-        /// <param name="x">Ширина матрицы</param>
-        /// <param name="y">Высота матрицы</param>
-        static void MatrixXNumber (int number, int x, int y)
+        /// <param name="matrix"></param>
+        static void PrintMatrix (int[,] matrix)
         {
-            int[,] matrix = new int[x, y];                                                      //матрица
-            int maxMatrix = 0;                                                                  //максимальное значение
-            Random rnd = new Random();                                                          //генератор рандома
+            int maxMatrix = matrix.Cast<int>().Max();                                           //максимальное значение
+            maxMatrix = (maxMatrix).ToString().Length;                                          //максимальная длина числа
 
-            //Наполняем матрицу
-            for (int i = 0; i < x; i++)
+            for (int i = 0; i < matrix.GetLength(0); i++)
             {
-                for (int j = 0; j < y; j++)
+                Console.Write("| ");
+                for (int j = 0; j < matrix.GetLength(1); j++)
                 {
-                    int temp = rnd.Next(0, 100);
-                    matrix[i, j] = temp;
-                    if (maxMatrix < temp)                                                       //находим максимальное значение
-                        maxMatrix = temp;
+                    Console.Write(matrix[i,j].ToString().PadLeft(maxMatrix) + " ");
                 }
-            }
-
-            maxMatrix = (maxMatrix * number).ToString().Length;                                 //максимальная длина числа
-
-            for (int i = 0; i < x; i++)
-            {
-                string row = "";                                                                //наполнем строку
-                string rowRes = "";                                                             //наполнем строку результата
-                if (i == x / 2)
-                    row += number + " x | ";
-                else
-                    row += row.PadLeft(number.ToString().Length + 2, ' ') + " | ";
-                for (int j = 0; j < y; j++)
-                {
-                    row += (matrix[i, j]).ToString().PadLeft(maxMatrix, ' ') + " ";
-                    rowRes += (number * matrix[i, j]).ToString().PadLeft(maxMatrix, ' ') + " ";
-                }
-                if (i == x / 2)
-                    row += "| = ";
-                else
-                    row += "|   ";
-                Console.WriteLine($"{row}| {rowRes}|");
+                Console.WriteLine("|");
             }
         }
 
         /// <summary>
-        /// Сумма матриц
+        /// Функция умножения матрицы на число
         /// </summary>
-        /// <param name="x">Ширина матрицы</param>
-        /// <param name="y">Высота матрицы</param>
-        static void SumMatrix (int x, int y)
+        /// <param name="number">Множитель матрицы</param>
+        /// <param name="matrix">Принимаемая матрица</param>
+        /// <returns>Матрица умноженная на число</returns>
+        static int[,] MatrixXNumber (int number, int[,] matrix)
         {
-            int[,] matrix1 = new int[x, y];                                                     //матрица 1
-            int[,] matrix2 = new int[x, y];                                                     //матрица 2
-            int maxMatrix1 = 0;                                                                 //максимальное значение 1 матрицы
-            int minMatrix1 = 0;                                                                 //минимательное значение 1 матрицы
-            int maxMatrix2 = 0;                                                                 //максимальное значение 2 матрицы
-            int maxTotal = 0;                                                                   //максимальное значение результата
-            Random rnd = new Random();                                                          //генератор рандома
-
-            //Наполняем матрицы
-            for (int i = 0; i < x; i++)
+            int[,] result = new int[matrix.GetLength(0), matrix.GetLength(1)];
+            for (int i = 0; i < matrix.GetLength(0); i++)
             {
-                for (int j = 0; j < y; j++)
+                for (int j = 0; j < matrix.GetLength(1); j++)
                 {
-                    //Первая матрица
-                    int temp = rnd.Next(0, 150);
-                    matrix1[i, j] = temp;
-                    if (maxMatrix1 < temp)                                                      //находим максимальное значение
-                        maxMatrix1 = temp;
-                    if (minMatrix1 > temp)
-                        minMatrix1 = temp;                                                      //находим минимальное значение
-                    //Вторая матрица
-                    temp = rnd.Next(0, 150);
-                    matrix2[i, j] = temp;
-                    if (maxMatrix2 < temp)                                                      //находим максимальное значение
-                        maxMatrix2 = temp;
+                    result[i,j] = number * matrix[i, j];
                 }
             }
-
-            int maxM1 = (maxMatrix1).ToString().Length;                                         //максимальная длина 1 матрицы
-            int maxM2 = (maxMatrix2).ToString().Length;                                         //максимальная длина 2 матрицы
-
-            void result(int sign)
-            {
-                maxTotal = (sign > 0)
-                    ? (maxMatrix1 + maxMatrix2).ToString().Length
-                    : (minMatrix1 - maxMatrix2).ToString().Length;                              //макс. длина результата
-                string textSign = (sign > 0) ? "+" : "-";
-                for (int i = 0; i < x; i++)
-                {
-                    string rowM1 = "| ";                                                        //наполнем строку для 1 матрицы
-                    string rowM2 = "| ";                                                        //наполнем строку для 2 матрицы
-                    string rowRes = "";                                                         //наполнем строку результата
-
-                    for (int j = 0; j < y; j++)
-                    {
-                        rowM1 += (matrix1[i, j]).ToString().PadLeft(maxM1, ' ') + " ";
-                        rowM2 += (matrix2[i, j]).ToString().PadLeft(maxM2, ' ') + " ";
-                        rowRes += (matrix1[i, j] + sign * matrix2[i, j]).ToString().PadLeft(maxTotal, ' ') + " ";
-                    }
-
-                    if (i == x / 2)
-                        Console.WriteLine($"{rowM1}| {textSign} {rowM2}| = | {rowRes}|");
-                    else
-                        Console.WriteLine($"{rowM1}|   {rowM2}|   | {rowRes}|");
-                }
-            }
-
-            result(1);
-            Console.WriteLine();
-            result(-1);
+            return result;
         }
 
         /// <summary>
-        /// Произведение двух матриц
+        /// Функция сложения матриц
         /// </summary>
-        /// <param name="x1">Ширина первой матрицы</param>
-        /// <param name="y1">Высота первой матрицы</param>
-        /// <param name="x2">Ширина второй матрицы</param>
-        /// <param name="y2">Высота второй матрицы</param>
-        static void MatrixMult (int x1, int y1, int x2, int y2)
+        /// <param name="matrix1">Первая матрица</param>
+        /// <param name="matrix2">Вторая матрица</param>
+        /// <returns>Сумма двух матриц</returns>
+        static int[,] SumMatrix (int[,] matrix1, int[,] matrix2)
         {
-            void output(int x, int y, int maxM, int[,] matrix)
+            int[,] result = new int[matrix1.GetLength(0), matrix1.GetLength(1)];
+            for (int i = 0; i < matrix1.GetLength(0); i++)
             {
-                for (int i = 0; i < x; i++)
+                for (int j = 0; j < matrix1.GetLength(1); j++)
                 {
-                    string row = "";
-                    for (int j = 0; j < y; j++)
-                    {
-                        row += (matrix[i, j]).ToString().PadLeft(maxM, ' ') + " ";
-                    }
-                    Console.WriteLine($"| {row}|");
+                    result[i,j] = matrix1[i, j] + matrix2[i, j];
                 }
             }
+            return result;
+        }
 
-            if (y1 != x2)
+
+        static int[,] MatrixMult (int[,] matrix1, int[,] matrix2)
+        {
+            if (matrix1.GetLength(1) != matrix2.GetLength(0))
             {
                 Console.WriteLine("Вы ввели не верную размерность матрицы!\r\n" +
                     "Количество колонок первой и строк второй матрицы должны совпадать, попробуйте ещё раз");
+                return null;
             }
 
-            int resX = x1;
-            int resY = y2;
+            int resX = matrix1.GetLength(0);
+            int resY = matrix2.GetLength(1);
 
-            int[,] matrix1 = new int[x1, y1];                                                   //матрица 1
-            int[,] matrix2 = new int[x2, y2];                                                   //матрица 2
-            int[,] resMatrix = new int[resX, resY];                                             //произведение матриц
-
-            int maxMatrix1 = 0;                                                                 //максимальное значение 1 матрицы
-            int maxMatrix2 = 0;                                                                 //максимальное значение 2 матрицы
-            int maxTotal = 0;                                                                   //максимальное значение результата
-            Random rnd = new Random();                                                          //генератор рандома
-
-            //Наполняем первую матрицу
-            for (int i = 0; i < x1; i++)
-            {
-                for (int j = 0; j < y1; j++)
-                {
-                    int temp = rnd.Next(1, 11);
-                    matrix1[i, j] = temp;
-                    if (maxMatrix1 < temp)                                                      //находим максимальное значение
-                        maxMatrix1 = temp;
-                }
-            }
-
-            //Наполняем вторую матрицу
-            for (int i = 0; i < x2; i++)
-            {
-                for (int j = 0; j < y2; j++)
-                {
-                    int temp = rnd.Next(1, 11);
-                    matrix2[i, j] = temp;
-                    if (maxMatrix2 < temp)                                                      //находим максимальное значение
-                        maxMatrix2 = temp;
-                }
-            }
-
-            maxTotal = 3;                                                                       //макс. длина результата
-            int maxM1 = (maxMatrix1).ToString().Length;                                         //максимальная длина 1 матрицы
-            int maxM2 = (maxMatrix2).ToString().Length;                                         //максимальная длина 2
-
-            Console.WriteLine("Произведение матрицы:");
-            output(x1, y1, maxM1, matrix1);
-            Console.WriteLine("На матрицу:");
-            output(x2, y2, maxM2, matrix2);
-            Console.WriteLine("Результат:");
+            int[,] result = new int[resX, resY];                                                //произведение матриц
 
             for (int i = 0; i < resX; i++)
             {
-                string row = "";
                 for (int j = 0; j < resY; j++)
                 {
-                    for (int xM = 0; xM < y1; xM++)
+                    for (int xM = 0; xM < matrix1.GetLength(1); xM++)
                     {
                         {
-                            resMatrix[i, j] += matrix1[i, xM] * matrix2[xM, j];
+                            result[i, j] += matrix1[i, xM] * matrix2[xM, j];
                         }
                     }
-                    row += resMatrix[i, j].ToString().PadLeft(maxTotal, ' ') + " ";
                 }
-                Console.WriteLine($"| {row}|");
             }
+            return result;
+        }
+
+        static int[,] transposition (int[,] matrix)
+        {
+            int[,] result = new int[matrix.GetLength(1), matrix.GetLength(0)];
+
+            for (int i = 0; i < matrix.GetLength(1); i++)
+            {
+                for (int j = 0; j < matrix.GetLength(0); j++)
+                {
+                    result[i, j] = matrix[j, i];
+                }
+            }
+            return result;
         }
         static void Main(string[] args)
         {
-            Console.WriteLine("Матрица умноженная на число");
-            MatrixXNumber(5,3,4);
-            Console.WriteLine("\r\nСложение и вычитание матриц");
-            SumMatrix(5,7);
+            //Начальные данные
+            int[,] matrix1 =
+            {
+                { 1, 2, 3 },
+                { 4, 5, 6 }
+            };
+
+            int[,] matrix2 =
+            {
+                { 2, 3, 4 },
+                { 5, 6, 7 }
+            };
+
+            int number = 5;
+
+            Console.WriteLine("Первая матрица");
+            PrintMatrix(matrix1);
+
+            Console.WriteLine("Вторая матрица");
+            PrintMatrix(matrix2);
+
+            Console.WriteLine("Множитель: " + number);
+
+            Console.WriteLine("\r\nПервая матрица умноженная на число");
+            PrintMatrix(MatrixXNumber(number, matrix1));
+
+            Console.WriteLine("\r\nСложение матриц");
+            PrintMatrix(SumMatrix(matrix1, matrix2));
+
+            Console.WriteLine("\r\nПроизведение матриц");
+            Console.WriteLine("\r\nСперва транспонируем вторую матрицу");
+            matrix2 = transposition(matrix2);
+            PrintMatrix(matrix2);
             Console.WriteLine();
-            MatrixMult(3,4,4,5);
+            PrintMatrix(MatrixMult(matrix1, matrix2));
 
             Console.ReadKey();
         }

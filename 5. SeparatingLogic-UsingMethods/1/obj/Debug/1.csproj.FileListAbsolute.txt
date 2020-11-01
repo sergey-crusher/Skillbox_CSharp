@@ -5,3 +5,10 @@ D:\Git\Skillbox_CSharp\5. SeparatingLogic-UsingMethods\SeparatingLogic-UsingMeth
 D:\Git\Skillbox_CSharp\5. SeparatingLogic-UsingMethods\SeparatingLogic-UsingMethods\SeparatingLogic-UsingMethods\obj\Debug\1.csproj.CoreCompileInputs.cache
 D:\Git\Skillbox_CSharp\5. SeparatingLogic-UsingMethods\SeparatingLogic-UsingMethods\SeparatingLogic-UsingMethods\obj\Debug\SeparatingLogic-UsingMethods.exe
 D:\Git\Skillbox_CSharp\5. SeparatingLogic-UsingMethods\SeparatingLogic-UsingMethods\SeparatingLogic-UsingMethods\obj\Debug\SeparatingLogic-UsingMethods.pdb
+D:\Git\Skillbox_CSharp\5. SeparatingLogic-UsingMethods\1\bin\Debug\SeparatingLogic-UsingMethods.exe.config
+D:\Git\Skillbox_CSharp\5. SeparatingLogic-UsingMethods\1\bin\Debug\SeparatingLogic-UsingMethods.exe
+D:\Git\Skillbox_CSharp\5. SeparatingLogic-UsingMethods\1\bin\Debug\SeparatingLogic-UsingMethods.pdb
+D:\Git\Skillbox_CSharp\5. SeparatingLogic-UsingMethods\1\obj\Debug\1.csprojAssemblyReference.cache
+D:\Git\Skillbox_CSharp\5. SeparatingLogic-UsingMethods\1\obj\Debug\1.csproj.CoreCompileInputs.cache
+D:\Git\Skillbox_CSharp\5. SeparatingLogic-UsingMethods\1\obj\Debug\SeparatingLogic-UsingMethods.exe
+D:\Git\Skillbox_CSharp\5. SeparatingLogic-UsingMethods\1\obj\Debug\SeparatingLogic-UsingMethods.pdb
