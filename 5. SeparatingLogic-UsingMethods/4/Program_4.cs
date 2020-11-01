@@ -8,8 +8,13 @@ namespace _4
 {
     class Program_4
     {
+        static string progression (params decimal[] args)
+        {
+            return "";
+        }
         static void Main(string[] args)
         {
+            progression(1, 3, 5, 7, 9);
         }
     }
 }

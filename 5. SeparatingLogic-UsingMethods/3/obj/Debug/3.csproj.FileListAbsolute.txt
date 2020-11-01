@@ -1,0 +1,7 @@
+D:\Git\Skillbox_CSharp\5. SeparatingLogic-UsingMethods\3\bin\Debug\3.exe.config
+D:\Git\Skillbox_CSharp\5. SeparatingLogic-UsingMethods\3\bin\Debug\3.exe
+D:\Git\Skillbox_CSharp\5. SeparatingLogic-UsingMethods\3\bin\Debug\3.pdb
+D:\Git\Skillbox_CSharp\5. SeparatingLogic-UsingMethods\3\obj\Debug\3.csprojAssemblyReference.cache
+D:\Git\Skillbox_CSharp\5. SeparatingLogic-UsingMethods\3\obj\Debug\3.csproj.CoreCompileInputs.cache
+D:\Git\Skillbox_CSharp\5. SeparatingLogic-UsingMethods\3\obj\Debug\3.exe
+D:\Git\Skillbox_CSharp\5. SeparatingLogic-UsingMethods\3\obj\Debug\3.pdb

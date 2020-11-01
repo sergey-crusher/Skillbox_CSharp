@@ -8,14 +8,31 @@ namespace _3
 {
     class Program_3
     {
+        /// <summary>
+        /// Возвращает строку без повторяющихся символов (без учёта регистра)
+        /// </summary>
+        /// <param name="str">Передаваемая строка</param>
+        /// <returns></returns>
         static string ExtraChar (string str)
         {
-
-            return str;
+            string res = "";
+            for (int i = 0; i < str.Length - 1; i++)
+            {
+                if (str[i].ToString().ToLower() != str[i + 1].ToString().ToLower())
+                {
+                    res += str[i];
+                }
+            }
+            return res + str[str.Length-1];
         }
 
         static void Main(string[] args)
         {
+            Console.WriteLine("ПППОООГГГООООДДДААА");
+            Console.WriteLine(ExtraChar("ПППОООГГГООООДДДААА"));
+            Console.WriteLine("Ххххоооорррооошшшиий деееннннь");
+            Console.WriteLine(ExtraChar("Ххххоооорррооошшшиий деееннннь"));
+            Console.ReadKey();
         }
     }
 }
