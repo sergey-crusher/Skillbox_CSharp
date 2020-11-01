@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30523.141
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2", "2\2.csproj", "{CBBDE2A3-CD70-4320-BD24-C1E58790E0CB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2", "SeparatingLogic-UsingMethods\2\2.csproj", "{CBBDE2A3-CD70-4320-BD24-C1E58790E0CB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3", "3\3.csproj", "{82D61573-AC1D-4B0D-962D-6B6C00A93B28}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3", "SeparatingLogic-UsingMethods\3\3.csproj", "{82D61573-AC1D-4B0D-962D-6B6C00A93B28}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "4", "4\4.csproj", "{9500334A-ACDD-47C4-B554-52AA35A5EF8D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "4", "SeparatingLogic-UsingMethods\4\4.csproj", "{9500334A-ACDD-47C4-B554-52AA35A5EF8D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "5", "5\5.csproj", "{8476C9AC-7BB3-4EAE-8366-80B078ADA862}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "5", "SeparatingLogic-UsingMethods\5\5.csproj", "{8476C9AC-7BB3-4EAE-8366-80B078ADA862}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1", "1\1.csproj", "{CA596F91-A989-497B-8227-EE6BF44D457E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1", "SeparatingLogic-UsingMethods\1\1.csproj", "{CA596F91-A989-497B-8227-EE6BF44D457E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
