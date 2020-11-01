@@ -8,8 +8,30 @@ namespace _5
 {
     class Program_5
     {
+        /// <summary>
+        /// Функция Аккермана
+        /// </summary>
+        /// <param name="n">Первое число</param>
+        /// <param name="m">Второе число</param>
+        /// <returns>Результат функции Аккермана</returns>
+        static double A(double n, double m)
+        {
+            double res = 0;
+            if (n == 0)
+                res = m + 1;
+            else if (n != 0 && m == 0)
+                res = A(n - 1, 1);
+            else if (n > 0 && m > 0)
+                res = A(n - 1, A(n, m - 1));
+            return res;
+        }
         static void Main(string[] args)
         {
+            Console.Write("A(2,5) = ");
+            Console.WriteLine(A(2, 5));
+            Console.Write("A(1,2) = ");
+            Console.WriteLine(A(1, 2));
+            Console.ReadKey();
         }
     }
 }
