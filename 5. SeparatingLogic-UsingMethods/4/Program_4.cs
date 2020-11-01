@@ -57,23 +57,28 @@ namespace _4
         /// <returns></returns>
         static string Progression (params double[] args)
         {
-            if (args[0] > args[1])
-            {
-                Array.Reverse(args);
-            }
-
-            double first = args.First();
-            double last = args.Last();
-
             string res = "";
+            if (args.Count() > 1)
+            {
+                if (args[0] > args[1])
+                {
+                    Array.Reverse(args);
+                }
 
-            if (Geometric(first, last, args[1] / args[0], args))
-                res = "Геометрическая прогрессия";
-            else if (Arithmetic(first, last, args[1] - args[0], args))
-                res = "Арифметическая прогрессия";
+                double first = args.First();
+                double last = args.Last();
+
+                if (Geometric(first, last, args[1] / args[0], args))
+                    res = "Геометрическая прогрессия";
+                else if (Arithmetic(first, last, args[1] - args[0], args))
+                    res = "Арифметическая прогрессия";
+                else
+                    res = "Ни то ни другое";
+            }
             else
-                res = "Ни то ни другое";
-
+            {
+                res = "Последовательность должна состоять минимум из двух чисел";
+            }
             return res;
         }
         static void Main(string[] args)
@@ -84,6 +89,8 @@ namespace _4
             Console.WriteLine(Progression(9, 6, 3, 0, -3));
             Console.Write("1, 2, 3, 5, 6 -> ");
             Console.WriteLine(Progression(1, 2, 3, 5, 6));
+            Console.Write("1 -> ");
+            Console.WriteLine(Progression(1));
             Console.ReadKey();
         }
     }
