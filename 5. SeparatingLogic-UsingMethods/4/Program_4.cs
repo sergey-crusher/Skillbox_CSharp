@@ -8,13 +8,83 @@ namespace _4
 {
     class Program_4
     {
-        static string progression (params decimal[] args)
+        /// <summary>
+        /// Проверка на арифметическую прогрессию
+        /// </summary>
+        /// <param name="first">Первый элемент</param>
+        /// <param name="last">Последний элемент</param>
+        /// <param name="coef">Коэффициент</param>
+        /// <param name="args">Весь массив чисел</param>
+        /// <returns>True - если прогрессия, False - если нет</returns>
+        static bool Arithmetic(double first, double last, double coef, params double[] args)
         {
-            return "";
+            int i = args.Length-1;
+            while (last > first && args[i] == last)
+            {
+                last -= coef;
+                i--;
+            }
+            if (last == first)
+                return true;
+            else
+                return false;
+        }
+        /// <summary>
+        /// Проверка на геометрическую прогрессию
+        /// </summary>
+        /// <param name="first">Первый элемент</param>
+        /// <param name="last">Последний элемент</param>
+        /// <param name="coef">Коэффициент</param>
+        /// <param name="args">Весь массив чисел</param>
+        /// <returns>True - если прогрессия, False - если нет</returns>
+        static bool Geometric(double first, double last, double coef, params double[] args)
+        {
+            int i = args.Length - 1;
+            while (last > first && args[i] == last)
+            {
+                last /= coef;
+                i--;
+            }
+            if (last == first)
+                return true;
+            else
+                return false;
+        }
+        /// <summary>
+        /// Возвращает строку с типом прогрессии
+        /// </summary>
+        /// <param name="args">Ряд чисел</param>
+        /// <returns></returns>
+        static string Progression (params double[] args)
+        {
+            if (args[0] > args[1])
+            {
+                Array.Reverse(args);
+            }
+
+            double first = args.First();
+            double last = args.Last();
+
+            string res = "";
+
+            if (Geometric(first, last, args[1] / args[0], args))
+                res = "Геометрическая прогрессия";
+            else if (Arithmetic(first, last, args[1] - args[0], args))
+                res = "Арифметическая прогрессия";
+            else
+                res = "Ни то ни другое";
+
+            return res;
         }
         static void Main(string[] args)
         {
-            progression(1, 3, 5, 7, 9);
+            Console.Write("4, 6, 9, 13.5 -> ");
+            Console.WriteLine(Progression(4, 6, 9, 13.5));
+            Console.Write("9, 6, 3, 0, -3 -> ");
+            Console.WriteLine(Progression(9, 6, 3, 0, -3));
+            Console.Write("1, 2, 3, 5, 6 -> ");
+            Console.WriteLine(Progression(1, 2, 3, 5, 6));
+            Console.ReadKey();
         }
     }
 }
