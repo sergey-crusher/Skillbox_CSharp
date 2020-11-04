@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace Files_and_Streams
 {
@@ -10,54 +11,87 @@ namespace Files_and_Streams
     {
         static void Main(string[] args)
         {
-            List<List<int>> numbers = new List<List<int>>();
-            numbers.Add(new List<int>());
-            int N = 10;
-            int Range = 1;
-            numbers[0].Add(1);
+            List<List<ulong>> numbers = new List<List<ulong>>();
+            numbers.Add(new List<ulong>());
+            int N = 50;
+            //int Range = 1;
+            //numbers[0].Add(1);
 
-            int index = 1;
+            //int index = 2;
 
-            while (index < 50)
-            { 
-                index++;
-                for (int j = 0; j < Range; j++)
-                {
-                    for (int i = 0; i < numbers[j].Count; i++)
-                    {
-                        try
-                        {
-                            if ((index) % numbers[j][i] != 0)
-                            {
-                                numbers[j].Add(index);
-                                index++;
-                                i = -1;
-                            }
-                            else
-                            {
-                                if (numbers[j + 1].Count > 0)
-                                    continue;
-                            }
-                        }
-                        catch
-                        {
-                            numbers.Add(new List<int>());
-                            numbers[j + 1].Add(index);
-                            Range++;
-                            index++;
-                        }
-                    }
-                }
-            }
+            //index++;
+            //for (int j = 0; j < Range; j++)
+            //{
+            //    bool check = true;
+            //    if (index > Math.Pow(2, j))
+            //    {
+            //        for (int i = 0; i < numbers[j].Count; i++)
+            //        {
+            //            if (check)
+            //            {
+            //                if ((index) % numbers[j][i] == 0)
+            //                {
+            //                    check = false;
 
-            for (int j = 0; j < Range; j++)
+            //                    if (j < numbers.Count - 1)
+            //                        continue;
+            //                    else
+            //                    {
+            //                        numbers.Add(new List<int>());
+            //                        numbers[j + 1].Add(index);
+            //                        Range++;
+            //                        i = -1;
+            //                        j = 0;
+            //                        index++;
+            //                        break;
+            //                    }
+            //                }
+            //            }
+            //            else
+            //                break;
+            //        }
+            //    }
+            //    if (check)
+            //    {
+            //        numbers[j].Add(index);
+            //        index++;
+            //        j = 0;
+            //        if (index > N)
+            //            break;
+            //    }
+            //}
+
+
+            long step = 2;
+            int index = 0;
+
+            using (StreamWriter w = new StreamWriter("test.txt", false, Encoding.GetEncoding("UTF-8")))
             {
-                Console.WriteLine($"Ряд {j}");
-                for (int i = 0; i < N; i++)
+                w.Write("Группа 1: 1");
+                for (long i = 2; i <= 1_000_000_000; i++)
                 {
-                    Console.Write($"{numbers[j][i]} ");
+                    if (i >= step)
+                    {
+                        w.Write($"\r\nГруппа {index+1}: ");
+                        index++;
+                        step *= 2;
+                    }
+                    w.Write($"{i} ");
                 }
             }
+
+            //for (int j = 1; j <= index; j++)
+            //{
+            //    Console.Write($"Ряд {j} -> ");
+            //    for (int i = 0; i < numbers[j].Count; i++)
+            //    {
+            //        Console.Write($"{numbers[j][i]} ");
+            //    }
+            //    Console.WriteLine();
+            //}
+
+            Console.WriteLine("Готово");
+            Console.ReadKey();
 
         }
     }
