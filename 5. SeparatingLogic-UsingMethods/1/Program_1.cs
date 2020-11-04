@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.Threading;
 
 namespace _1
 {
@@ -37,7 +38,7 @@ namespace _1
         /// </summary>
         /// <param name="number">Множитель матрицы</param>
         /// <param name="matrix">Принимаемая матрица</param>
-        /// <returns>Матрица умноженная на число</returns>
+        /// <returns>Возвращает матрицу умноженную на число</returns>
         static int[,] MatrixXNumber (int number, int[,] matrix)
         {
             int[,] result = new int[matrix.GetLength(0), matrix.GetLength(1)];
@@ -71,13 +72,17 @@ namespace _1
         }
 
 
+        /// <summary>
+        /// Произведение двух матриц
+        /// </summary>
+        /// <param name="matrix1">Двумерная матрица первого множителя</param>
+        /// <param name="matrix2">Двумерная матрица второго множителя</param>
+        /// <returns>Возвращает результат произведения двух матриц</returns>
         static int[,] MatrixMult (int[,] matrix1, int[,] matrix2)
         {
             if (matrix1.GetLength(1) != matrix2.GetLength(0))
             {
-                Console.WriteLine("Вы ввели не верную размерность матрицы!\r\n" +
-                    "Количество колонок первой и строк второй матрицы должны совпадать, попробуйте ещё раз");
-                return null;
+                throw new Exception("Количество колонок первой и строк второй матрицы должны совпадать, попробуйте ещё раз");
             }
 
             int resX = matrix1.GetLength(0);
@@ -100,7 +105,12 @@ namespace _1
             return result;
         }
 
-        static int[,] transposition (int[,] matrix)
+        /// <summary>
+        /// Транспонирование матрицы
+        /// </summary>
+        /// <param name="matrix">Двумерная матрица</param>
+        /// <returns>Возвращает транспонированную матрицу</returns>
+        static int[,] Transposition (int[,] matrix)
         {
             int[,] result = new int[matrix.GetLength(1), matrix.GetLength(0)];
 
@@ -113,45 +123,164 @@ namespace _1
             }
             return result;
         }
+
+        /// <summary>
+        /// Заполнение матрицы случайными значениями
+        /// </summary>
+        /// <param name="matrix">Двумерная матрица</param>
+        /// <returns></returns>
+        static int[,] MatrixFilling (int[,] matrix)
+        {
+            Random rnd = new Random(DateTime.Now.Millisecond);
+            int[,] result = new int[matrix.GetLength(1), matrix.GetLength(0)];
+
+            for (int i = 0; i < matrix.GetLength(1); i++)
+            {
+                for (int j = 0; j < matrix.GetLength(0); j++)
+                {
+                    result[i, j] = rnd.Next(0,100);
+                }
+            }
+            return result;
+        }
+
         static void Main(string[] args)
         {
             //Начальные данные
-            int[,] matrix1 =
+            int x, y = 0;
+
+            int[,] matrix1;
+            int[,] matrix2;
+
+            int number = 0;
+
+            while (true)
             {
-                { 1, 2, 3 },
-                { 4, 5, 6 }
-            };
+                Console.WriteLine("Выберите один из варинтов:\r\n" +
+                    "1 - Произведение матрицы на число\r\n" +
+                    "2 - Сложение матриц\r\n" +
+                    "3 - Произведение матриц");
+                string answer = Console.ReadLine();
 
-            int[,] matrix2 =
-            {
-                { 2, 3, 4 },
-                { 5, 6, 7 }
-            };
+                while (true)
+                {
+                    //Произведение матрицы на число
+                    if (answer == "1")
+                    {
+                        Console.WriteLine("Вы выбрали произведение матрицы на число\r\n" +
+                            "Введите ширину матрицы:");
+                        int.TryParse(Console.ReadLine(), out x);
 
-            int number = 5;
+                        Console.WriteLine("Введите высоту матрицы:");
+                        int.TryParse(Console.ReadLine(), out y);
+                        if (y <= 0 || x <= 0)
+                        {
+                            Console.WriteLine("Размерность матрицы не должна быть меньше 1х1, введите корректные данные");
+                            continue;
+                        }
+                        Console.WriteLine("Введите множитель матрицы:");
+                        int.TryParse(Console.ReadLine(), out number);
 
-            Console.WriteLine("Первая матрица");
-            PrintMatrix(matrix1);
+                        matrix1 = new int[y, x];
+                        matrix1 = MatrixFilling(matrix1);
 
-            Console.WriteLine("Вторая матрица");
-            PrintMatrix(matrix2);
+                        Console.WriteLine("Произведение матрицы:");
+                        PrintMatrix(matrix1);
+                        Console.WriteLine("На число:");
+                        Console.WriteLine(number);
+                        Console.WriteLine("Результат:");
+                        PrintMatrix(MatrixXNumber(number, matrix1));
+                        break;
+                    }
+                    //Сложение матриц
+                    if (answer == "2")
+                    {
+                        Console.WriteLine("Вы выбрали произведение сложение матриц\r\n" +
+                            "Введите ширину для матриц:");
+                        int.TryParse(Console.ReadLine(), out x);
 
-            Console.WriteLine("Множитель: " + number);
+                        Console.WriteLine("Введите высоту для матриц:");
+                        int.TryParse(Console.ReadLine(), out y);
+                        if (y <= 0 || x <= 0)
+                        {
+                            Console.WriteLine("Размерность матрицы не должна быть меньше 1х1, введите корректные данные");
+                            continue;
+                        }
 
-            Console.WriteLine("\r\nПервая матрица умноженная на число");
-            PrintMatrix(MatrixXNumber(number, matrix1));
+                        matrix1 = new int[y, x];
+                        matrix1 = MatrixFilling(matrix1);
 
-            Console.WriteLine("\r\nСложение матриц");
-            PrintMatrix(SumMatrix(matrix1, matrix2));
+                        matrix2 = new int[y, x];
+                        matrix2 = MatrixFilling(matrix2);
 
-            Console.WriteLine("\r\nПроизведение матриц");
-            Console.WriteLine("\r\nСперва транспонируем вторую матрицу");
-            matrix2 = transposition(matrix2);
-            PrintMatrix(matrix2);
-            Console.WriteLine();
-            PrintMatrix(MatrixMult(matrix1, matrix2));
+                        Console.WriteLine("Первое слагаемое:");
+                        PrintMatrix(matrix1);
+                        Console.WriteLine("Второе слагаемое:");
+                        PrintMatrix(matrix2);
+                        Console.WriteLine("Результат:");
+                        PrintMatrix(SumMatrix(matrix1, matrix2));
+                        break;
+                    }
+                    //Произведение матриц
+                    if (answer == "3")
+                    {
+                        Console.WriteLine("Вы выбрали сложение матриц\r\n" +
+                                "Введите ширину ПЕРВОЙ матрицы:");
+                        int.TryParse(Console.ReadLine(), out x);
 
-            Console.ReadKey();
+                        Console.WriteLine("Введите высоту ПЕРВОЙ матрицы:");
+                        int.TryParse(Console.ReadLine(), out y);
+                        if (y <= 0 || x <= 0)
+                        {
+                            Console.WriteLine("Размерность матрицы не должна быть меньше 1х1, введите корректные данные");
+                            continue;
+                        }
+
+                        matrix1 = new int[y, x];
+                        matrix1 = MatrixFilling(matrix1);
+
+                        Console.WriteLine("Введите ширину ВТОРОЙ матрицы:");
+                        int.TryParse(Console.ReadLine(), out x);
+
+                        Console.WriteLine("Введите высоту ВТОРОЙ матрицы:");
+                        int.TryParse(Console.ReadLine(), out y);
+                        if (y <= 0 || x <= 0)
+                        {
+                            Console.WriteLine("Размерность матрицы не должна быть меньше 1х1, введите корректные данные");
+                            continue;
+                        }
+
+                        matrix2 = new int[y, x];
+                        matrix2 = MatrixFilling(matrix2);
+                        try
+                        {
+                            Console.WriteLine("Произведение матрицы:");
+                            PrintMatrix(matrix1);
+                            Console.WriteLine("На матрицу:");
+                            PrintMatrix(matrix2);
+                            Console.WriteLine("Результат:");
+                            PrintMatrix(MatrixMult(matrix1, matrix2));
+                        }
+                        catch (Exception e)
+                        {
+                            if (e.Message == "Количество колонок первой и строк второй матрицы должны совпадать, попробуйте ещё раз")
+                            {
+                                Console.WriteLine(e.Message);
+                                continue;
+                            }
+                        }
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Выберите один из трёх вариантов");
+                        break;
+                    }
+                }
+                Console.WriteLine("Если хотите продолжить, нажмите любую клавишу...");
+
+                Console.ReadKey();
+            }
         }
     }
 }
