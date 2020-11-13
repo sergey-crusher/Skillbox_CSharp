@@ -4,16 +4,193 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.IO.Compression;
 
 namespace Files_and_Streams
 {
     class Program
     {
+        const string output = "out.txt";
+        const string compFile = "compressedFile.zip";
+
+        /// <summary>
+        /// Сжатие файла
+        /// </summary>
+        static void Compress()
+        {
+            //Поток для чтения исходного файла
+            using (FileStream sourceStream = new FileStream(output, FileMode.OpenOrCreate))
+            {
+                //Поток для записи сжатого файла
+                using (FileStream targetStream = File.Create(compFile))
+                {
+                    //Поток архивации
+                    using (GZipStream compressionStream = new GZipStream(targetStream, CompressionMode.Compress))
+                    {
+                        sourceStream.CopyTo(compressionStream);                                 //копируем байты из одного потока в другой
+                        Console.WriteLine("Сжатие файла {0} завершено. Исходный размер: {1}  сжатый размер: {2}.",
+                            output, sourceStream.Length.ToString(), targetStream.Length.ToString());
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Возвращает количество групп
+        /// </summary>
+        /// <param name="N">Конечное число алгоритма</param>
+        /// <returns>Количество групп</returns>
+        static int NumberOfGroups(int N)
+        {
+            int count = 1;
+            while (N > 1)
+            {
+                N /= 2;
+                count++;
+            }
+            return count;
+        }
+
+        /// <summary>
+        /// Запись в файл результа разбиения чисел по группа
+        /// </summary>
+        /// <param name="N">Конечное число алгоритма</param>
+        static void Writing2File(int N)
+        {
+            long step = 2;
+            int index = 1;
+
+            using (StreamWriter w = new StreamWriter(output, false, Encoding.GetEncoding("UTF-8")))
+            {
+                w.Write("Группа 1: 1");
+                for (long i = 2; i <= N; i++)
+                {
+                    if (i >= step)
+                    {
+                        w.Write($"\r\nГруппа {index + 1}: ");
+                        index++;
+                        step *= 2;
+                    }
+                    w.Write($"{i} ");
+                }
+            }
+        }
+
+        /// <summary>
+        /// Отчёт времени
+        /// </summary>
+        /// <param name="dt">Затраченное время</param>
+        /// <param name="unit">Формат вывода: s - секунды, ms - миллисекунды</param>
+        /// <returns>Возвращает время в указанном формате</returns>
+        static string ElapsedTime(TimeSpan dt, string unit)
+        {
+            string[] time = dt.ToString().Split('.', ':');
+            string res = "";
+            switch (unit)
+            {
+                case "ms":
+                    {
+                        res = (long.Parse(time[1]) * 60_000 + long.Parse(time[2]) * 1000 + long.Parse(time[3].Substring(0,3))).ToString();
+                        break;
+                    }
+                case "s":
+                    {
+                        res = (float.Parse(time[1]) * 60 + float.Parse(time[2]) + float.Parse(time[3].Substring(0, 3)) /1000).ToString();
+                        break;
+                    }
+            }
+            return res;
+        }
+
         static void Main(string[] args)
         {
-            List<List<ulong>> numbers = new List<List<ulong>>();
-            numbers.Add(new List<ulong>());
-            int N = 50;
+            string pathToNumber = "./number.txt";                                               //путь по умолчанию
+            Console.WriteLine($"Укажите путь к файлу или нажимите клавишу (Enter) " +
+                $"чтобы использовать путь по умолчанию \"{pathToNumber}\":");                   //сообщение приветсвия
+
+            int N = 50;                                                                         //число N
+
+            //Проверка наличия ввода нового пути
+            string input = Console.ReadLine();
+            pathToNumber = input != "" ? input : pathToNumber;
+            Console.WriteLine(pathToNumber);
+
+            //Считываем значение из файла
+            try
+            {
+                if (int.TryParse(File.ReadAllText(pathToNumber), out N))
+                    Console.WriteLine($"Количество элементов: {N}");
+                else
+                {
+                    Console.WriteLine($"Число в файле было не корректно");
+                    Console.WriteLine("Исправьте ошибку и перезапустите программу. Нажимите любую клавишу чтобы выйти.");
+                    Console.ReadKey();
+                    Environment.Exit(0);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"Произошла ошибка с файлом: \"{pathToNumber}\"");
+                Console.WriteLine(e.Message);
+                Console.WriteLine("Исправьте ошибку и перезапустите программу. Нажимите любую клавишу чтобы выйти.");
+                Console.ReadKey();
+                Environment.Exit(0);
+            }
+
+            //Развила выбора действий
+            string change;                                                                      //хранит выбор пользователя
+            DateTime beginDate = new DateTime();
+
+            while (true)
+            {
+                Console.WriteLine("Выберите один из двух вариантов:");
+                Console.WriteLine("1 - Показать только количество групп");
+                Console.WriteLine("2 - Получить заполненные группы и записать их в файл");
+
+                change = Console.ReadLine();
+                beginDate = DateTime.Now;
+                DateTime endTime;
+                if (change == "1")
+                {
+                    Console.WriteLine($"Количество групп: {NumberOfGroups(N)}");
+                    endTime = DateTime.Now;
+                    Console.WriteLine($"Затраченное количество секунд: {ElapsedTime(endTime - beginDate, "s")}");
+                    Console.WriteLine($"Затраченное количество миллисекунд: {ElapsedTime(endTime - beginDate, "ms")}");
+                }
+                else if (change == "2")
+                {
+                    Writing2File(N);
+                    Console.WriteLine($"Запись файла {Path.GetFullPath(output)} завершена");
+                    endTime = DateTime.Now;
+                    Console.WriteLine($"Затраченное количество секунд: {ElapsedTime(endTime - beginDate, "s")}");
+                    Console.WriteLine($"Затраченное количество миллисекунд: {ElapsedTime(endTime - beginDate, "ms")}");
+
+                    while (true)
+                    {
+                        Console.WriteLine("Если желаете архивировать данные нажмите [y], в противном случае [n]");
+                        char tempKey = Console.ReadKey().KeyChar;
+                        Console.WriteLine();
+                        if (tempKey == 'y')
+                        {
+                            Compress();
+                        }
+                        else if (tempKey == 'n')
+                            break;
+                        else
+                            continue;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Ошибка выбора ответа, выберите один из двух вариантов");
+                    continue;
+                }
+            }
+
+            //Напоминание о впустую потраченном дне
+
+            //List<List<ulong>> numbers = new List<List<ulong>>();
+            //numbers.Add(new List<ulong>());
             //int Range = 1;
             //numbers[0].Add(1);
 
@@ -60,39 +237,6 @@ namespace Files_and_Streams
             //            break;
             //    }
             //}
-
-
-            long step = 2;
-            int index = 0;
-
-            using (StreamWriter w = new StreamWriter("test.txt", false, Encoding.GetEncoding("UTF-8")))
-            {
-                w.Write("Группа 1: 1");
-                for (long i = 2; i <= 1_000_000_000; i++)
-                {
-                    if (i >= step)
-                    {
-                        w.Write($"\r\nГруппа {index+1}: ");
-                        index++;
-                        step *= 2;
-                    }
-                    w.Write($"{i} ");
-                }
-            }
-
-            //for (int j = 1; j <= index; j++)
-            //{
-            //    Console.Write($"Ряд {j} -> ");
-            //    for (int i = 0; i < numbers[j].Count; i++)
-            //    {
-            //        Console.Write($"{numbers[j][i]} ");
-            //    }
-            //    Console.WriteLine();
-            //}
-
-            Console.WriteLine("Готово");
-            Console.ReadKey();
-
         }
     }
 }
