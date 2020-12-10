@@ -5,34 +5,78 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.IO.Compression;
+using System.Collections;
+using System.Diagnostics;
 
 namespace Files_and_Streams
 {
-    class Program
+    public class Program
     {
-        const string output = "out.txt";
+        const string outputFile = "out.txt";
         const string compFile = "compressedFile.zip";
+        static List<List<int>> output;
+
 
         /// <summary>
         /// Сжатие файла
         /// </summary>
-        static void Compress()
+        static void Compress(string pathCompFile)
         {
             //Поток для чтения исходного файла
-            using (FileStream sourceStream = new FileStream(output, FileMode.OpenOrCreate))
+            using (FileStream sourceStream = new FileStream(outputFile, FileMode.OpenOrCreate))
             {
                 //Поток для записи сжатого файла
-                using (FileStream targetStream = File.Create(compFile))
+                using (FileStream targetStream = File.Create(pathCompFile+compFile))
                 {
                     //Поток архивации
                     using (GZipStream compressionStream = new GZipStream(targetStream, CompressionMode.Compress))
                     {
-                        sourceStream.CopyTo(compressionStream);                                 //копируем байты из одного потока в другой
+                        //Копируем байты из одного потока в другой
+                        sourceStream.CopyTo(compressionStream);
                         Console.WriteLine("Сжатие файла {0} завершено. Исходный размер: {1}  сжатый размер: {2}.",
-                            output, sourceStream.Length.ToString(), targetStream.Length.ToString());
+                            outputFile, sourceStream.Length.ToString(), targetStream.Length.ToString());
                     }
                 }
             }
+        }
+
+        /// <summary>
+        /// Решето Эратосфена
+        /// </summary>
+        /// <param name="n">Конечное число алгоритма</param>
+        /// <returns>Массив простых чисел</returns>
+        static List<int> SieveEratosthenes(int n)
+        {
+            BitArray bitArray = new BitArray(n);
+            bitArray.SetAll(true);
+            var numbers = new List<int>();
+
+            int check;
+
+            for (var i = 2; i < Math.Sqrt(n); i++)
+            {
+                for (var j = 2; j < n; j++)
+                {
+                    check = i * j;
+                    //удаляем кратные числа из списка
+                    if (check < n && check > 0)
+                    {
+                        bitArray[i*j] = false;
+                    }
+                    else
+                    { 
+                        break; 
+                    }
+                }
+            }
+
+            for (int i = 3; i < n; i++)
+            {
+                if (bitArray[i])
+                    numbers.Add(i);
+            }
+
+            return numbers;
         }
 
         /// <summary>
@@ -52,253 +96,191 @@ namespace Files_and_Streams
         }
 
         /// <summary>
-        /// Запись в файл результа разбиения чисел по группа
+        /// Рассчитывает и выводит в консоль в "красивом" виде
         /// </summary>
-        /// <param name="N">Конечное число алгоритма</param>
-        static void Writing2File(int N)
+        /// <param name="N">Входящее число</param>
+        static void Beautiful(int N)
         {
-            long step = 2;
-            int index = 1;
+            int mult = 0;
+            output = new List<List<int>>();
+            BitArray bitArray;
 
-            using (StreamWriter w = new StreamWriter(output, false, Encoding.GetEncoding("UTF-8")))
+            //1-ая группа
+            output.Add(new List<int>());
+            output[0].Add(1);
+            //2-ая группа (все простые числа)
+            output.Add(new List<int>());
+            int number = 3;                                                                 //Начальное число для цикла
+            output[1].Add(2);                                                               //Добавляем двойку
+            bool check = true;                                                              //Для проверки - является ли простым
+            output[1].AddRange(SieveEratosthenes(N));                                       //Наполняем простыми числами
+
+            //3-я группа
+            output.Add(new List<int>());
+            bitArray = new BitArray(N+1);
+            for (int i = 0; i < Math.Sqrt(output[1].Count); i++)
             {
-                w.Write("Группа 1: 1");
-                for (long i = 2; i <= N; i++)
+                for (int j = 0; j < output[1].Count - i; j++)
                 {
-                    if (i >= step)
-                    {
-                        w.Write($"\r\nГруппа {index + 1}: ");
-                        index++;
-                        step *= 2;
-                    }
-                    w.Write($"{i} ");
+                    mult = output[1][i] * output[1][j];
+                    if (mult <= N && mult > 0)
+                        bitArray[mult] = true;
+                    else
+                        break;
                 }
+            }
+            //Добавляем в список
+            for (int i = 0; i <= N; i++)
+                if (bitArray[i])
+                    output[2].Add(i);
+
+            //Последующие группы
+            for (int k = 3; k < NumberOfGroups(N); k++)
+            {
+                bitArray = new BitArray(N+1);
+                output.Add(new List<int>());
+                for (int i = 0; i < Math.Sqrt(output[1].Count); i++)
+                {
+                    for (int j = 0; j < output[k - 1].Count - i; j++)
+                    {
+                        mult = output[1][i] * output[k - 1][j];
+                        if (mult <= N && mult > 0)
+                            bitArray[mult] = true;
+                        else
+                            break;
+                    }
+                }
+                for (int i = 0; i <= N; i++)
+                    if (bitArray[i])
+                        output[k].Add(i);
             }
         }
 
         /// <summary>
-        /// Отчёт времени
+        /// Быстрый расчёт
         /// </summary>
-        /// <param name="dt">Затраченное время</param>
-        /// <param name="unit">Формат вывода: s - секунды, ms - миллисекунды</param>
-        /// <returns>Возвращает время в указанном формате</returns>
-        static string ElapsedTime(TimeSpan dt, string unit)
+        /// <param name="N">Входящее число</param>
+        static void MainTask(int N)
         {
-            string[] time = dt.ToString().Split('.', ':');
-            string res = "";
-            switch (unit)
+            output = new List<List<int>>();
+            output.Add(new List<int>());
+
+            int step = 2;
+            int index = 0;
+
+            for (int i = 1; i <= N; i++)
             {
-                case "ms":
-                    {
-                        res = (long.Parse(time[1]) * 60_000 + long.Parse(time[2]) * 1000 + long.Parse(time[3].Substring(0,3))).ToString();
-                        break;
-                    }
-                case "s":
-                    {
-                        res = (float.Parse(time[1]) * 60 + float.Parse(time[2]) + float.Parse(time[3].Substring(0, 3)) /1000).ToString();
-                        break;
-                    }
+                if (i >= step)
+                {
+                    index++;
+                    step *= 2;
+                    output.Add(new List<int>());
+                }
+                output[index].Add(i);
             }
-            return res;
+
+            //Вывод в консоль
+            if (false)
+            {
+                for (int i = 0; i < output.Count; i++)
+                {
+                    for (int j = 0; j < output[i].Count; j++)
+                    {
+                        Console.Write(output[i][j] + " ");
+                    }
+                    Console.WriteLine();
+                }
+            }
         }
 
         static void Main(string[] args)
         {
-            string pathToNumber = "./number.txt";                                               //путь по умолчанию
-            Console.WriteLine($"Укажите путь к файлу или нажимите клавишу (Enter) " +
-                $"чтобы использовать путь по умолчанию \"{pathToNumber}\":");                   //сообщение приветсвия
-
-            int N = 50;                                                                         //число N
-
-            //Проверка наличия ввода нового пути
-            string input = Console.ReadLine();
-            pathToNumber = input != "" ? input : pathToNumber;
-            Console.WriteLine(pathToNumber);
-
-            //Считываем значение из файла
-            try
-            {
-                if (int.TryParse(File.ReadAllText(pathToNumber), out N))
-                    Console.WriteLine($"Количество элементов: {N}");
-                else
-                {
-                    Console.WriteLine($"Число в файле было не корректно");
-                    Console.WriteLine("Исправьте ошибку и перезапустите программу. Нажимите любую клавишу чтобы выйти.");
-                    Console.ReadKey();
-                    Environment.Exit(0);
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine($"Произошла ошибка с файлом: \"{pathToNumber}\"");
-                Console.WriteLine(e.Message);
-                Console.WriteLine("Исправьте ошибку и перезапустите программу. Нажимите любую клавишу чтобы выйти.");
-                Console.ReadKey();
-                Environment.Exit(0);
-            }
-
-            //Развила выбора действий
-            string change;                                                                      //хранит выбор пользователя
-            DateTime beginDate = new DateTime();
-
+            //Зацикливаем интефейс программы
             while (true)
             {
-                Console.WriteLine("Выберите один из двух вариантов:");
-                Console.WriteLine("1 - Показать только количество групп");
-                Console.WriteLine("2 - Получить заполненные группы и записать их в файл");
-
-                change = Console.ReadLine();
-                beginDate = DateTime.Now;
-                DateTime endTime;
-                if (change == "1")
+                //try
                 {
-                    Console.WriteLine($"Количество групп: {NumberOfGroups(N)}");
-                    endTime = DateTime.Now;
-                    Console.WriteLine($"Затраченное количество секунд: {ElapsedTime(endTime - beginDate, "s")}");
-                    Console.WriteLine($"Затраченное количество миллисекунд: {ElapsedTime(endTime - beginDate, "ms")}");
-                }
-                else if (change == "2")
-                {
-                    Writing2File(N);
-                    Console.WriteLine($"Запись файла {Path.GetFullPath(output)} завершена");
-                    endTime = DateTime.Now;
-                    Console.WriteLine($"Затраченное количество секунд: {ElapsedTime(endTime - beginDate, "s")}");
-                    Console.WriteLine($"Затраченное количество миллисекунд: {ElapsedTime(endTime - beginDate, "ms")}");
-
-                    while (true)
+                    //Создаём таймер
+                    Stopwatch stopWatch = new Stopwatch();
+                    //Считываем количество элементов N из файла
+                    int N = int.Parse(File.ReadAllText("N"));
+                    //Проверяем число на вхождение в диапазон
+                    if (N > 0 && N <= 1_000_000_000)
                     {
-                        Console.WriteLine("Если желаете архивировать данные нажмите [y], в противном случае [n]");
-                        char tempKey = Console.ReadKey().KeyChar;
-                        Console.WriteLine();
-                        if (tempKey == 'y')
+                        //Приветсвие пользователя
+                        Console.WriteLine("Выберите режим работы: \r\n"+
+                            "1 - посчитать количество групп\r\n" +
+                            "2 - произвести красивый расчёт (не рекомендуется для больших чисел)\r\n" +
+                            "3 - быстрый, полный расчёт");
+                        //Считываем то что ввёл пользователь
+                        string answer = Console.ReadLine();
+                        stopWatch.Start();
+                        //Определяем действие
+                        switch (answer)
                         {
-                            Compress();
+                            case "1":
+                                Console.WriteLine($"Количество групп: {NumberOfGroups(N)}");
+                                break;
+                            case "2":
+                                Beautiful(N);
+                                break;
+                            case "3":
+                                MainTask(N);
+                                break;
+                            default:
+                                Console.WriteLine("Введите значение \"1\", \"2\" или \"3\"");
+                                continue;
                         }
-                        else if (tempKey == 'n')
-                            break;
-                        else
-                            continue;
+                        stopWatch.Stop();
+                        TimeSpan ts = stopWatch.Elapsed;
+
+                        //Определяем формат времени и вывод
+                        string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:0000}",
+                            ts.Hours, ts.Minutes, ts.Seconds,
+                            ts.Milliseconds);
+                        Console.WriteLine(elapsedTime);
+
+                        if (output != null)
+                        {
+                            //Создание файла
+                            using (StreamWriter w = new StreamWriter(outputFile, false, Encoding.GetEncoding("UTF-8")))
+                            {
+                                for (int i = 0; i < output.Count; i++)
+                                {
+                                    w.Write($"Группа {i + 1}: ");
+                                    w.WriteLine(String.Join(",", output[i]));
+                                }
+                            }
+
+                            //Архивация
+                            Console.WriteLine("Если желаете создать архив, " +
+                            "нажмите \"Enter\" чтобы использовать путь по умолчанию (\"./compressedFile.zip\") " +
+                            "или введите свой путь к файлу:");
+                            //Определяем действие
+                            answer = Console.ReadLine();
+                            switch (answer)
+                            {
+                                case "":
+                                    Compress("");
+                                    break;
+                                default:
+                                    Compress(answer);
+                                    break;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Укажите число от 1 до 1 000 000 000");
+                        continue;
                     }
                 }
-                else
-                {
-                    Console.WriteLine("Ошибка выбора ответа, выберите один из двух вариантов");
-                    continue;
-                }
+                //catch (Exception e)
+                //{
+                //    Console.WriteLine(e.Message);
+                //}
+                Console.ReadKey();
             }
-
-            //Напоминание о впустую потраченном дне
-
-            //List<List<ulong>> numbers = new List<List<ulong>>();
-            //numbers.Add(new List<ulong>());
-            //int Range = 1;
-            //numbers[0].Add(1);
-
-            //int index = 2;
-
-            //index++;
-            //for (int j = 0; j < Range; j++)
-            //{
-            //    bool check = true;
-            //    if (index > Math.Pow(2, j))
-            //    {
-            //        for (int i = 0; i < numbers[j].Count; i++)
-            //        {
-            //            if (check)
-            //            {
-            //                if ((index) % numbers[j][i] == 0)
-            //                {
-            //                    check = false;
-
-            //                    if (j < numbers.Count - 1)
-            //                        continue;
-            //                    else
-            //                    {
-            //                        numbers.Add(new List<int>());
-            //                        numbers[j + 1].Add(index);
-            //                        Range++;
-            //                        i = -1;
-            //                        j = 0;
-            //                        index++;
-            //                        break;
-            //                    }
-            //                }
-            //            }
-            //            else
-            //                break;
-            //        }
-            //    }
-            //    if (check)
-            //    {
-            //        numbers[j].Add(index);
-            //        index++;
-            //        j = 0;
-            //        if (index > N)
-            //            break;
-            //    }
-            //}
         }
     }
 }
-
-#region Домашнее задание
-///
-/// Группа начинающих программистов решила поучаствовать в хакатоне с целью демонстрации
-/// своих навыков. 
-/// 
-/// Немного подумав они вспомнили, что не так давно на занятиях по математике
-/// они проходили тему "свойства делимости целых чисел". На этом занятии преподаватель показывал
-/// пример с использованием фактов делимости. 
-/// Пример заключался в следующем: 
-/// Написав на доске все числа от 1 до N, N = 50, преподаватель разделил числа на несколько групп
-/// так, что если одно число делится на другое, то эти числа попадают в разные группы. 
-/// В результате этого разбиения получилось M групп, для N = 50, M = 6
-/// 
-/// N = 50
-/// Группы получились такими: 
-/// 
-/// Группа 1: 1
-/// Группа 2: 2 3 5 7 11 13 17 19 23 29 31 37 41 43 47
-/// Группа 3: 4 6 9 10 14 15 21 22 25 26 33 34 35 38 39 46 49
-/// Группа 4: 8 12 18 20 27 28 30 42 44 45 50
-/// Группа 5: 16 24 36 40
-/// Группа 6: 32 48
-/// 
-/// M = 6
-/// 
-/// ===========
-/// 
-/// N = 10
-/// Группы получились такими: 
-/// 
-/// Группа 1: 1
-/// Группа 2: 2 7 9
-/// Группа 3: 3 4 10
-/// Группа 4: 5 6 8
-/// 
-/// M = 4
-/// 
-/// Участники хакатона решили эту задачу, добавив в неё следующие возможности:
-/// 1. Программа считыват из файла (путь к которому можно указать) некоторое N, 
-///    для которого нужно подсчитать количество групп
-///    Программа работает с числами N не превосходящими 1 000 000 000
-///   
-/// 2. В ней есть два режима работы:
-///   2.1. Первый - в консоли показывается только количество групп, т е значение M
-///   2.2. Второй - программа получает заполненные группы и записывает их в файл используя один из
-///                 вариантов работы с файлами
-///            
-/// 3. После выполения пунктов 2.1 или 2.2 в консоли отображается время, за которое был выдан результат 
-///    в секундах и миллисекундах
-/// 
-/// 4. После выполнения пунта 2.2 программа предлагает заархивировать данные и если пользователь соглашается -
-/// делает это.
-/// 
-/// Попробуйте составить конкуренцию начинающим программистам и решить предложенную задачу
-/// (добавление новых возможностей не возбраняется)
-///
-/// * При выполнении текущего задания, необходимо документировать код 
-///   Как пометками, так и xml документацией
-///   В обязательном порядке создать несколько собственных методов
-///   
-#endregion
