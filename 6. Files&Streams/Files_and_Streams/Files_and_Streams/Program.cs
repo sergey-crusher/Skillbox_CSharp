@@ -198,7 +198,7 @@ namespace Files_and_Streams
             //Зацикливаем интефейс программы
             while (true)
             {
-                //try
+                try
                 {
                     //Создаём таймер
                     Stopwatch stopWatch = new Stopwatch();
@@ -275,10 +275,10 @@ namespace Files_and_Streams
                         continue;
                     }
                 }
-                //catch (Exception e)
-                //{
-                //    Console.WriteLine(e.Message);
-                //}
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                }
                 Console.ReadKey();
             }
         }
