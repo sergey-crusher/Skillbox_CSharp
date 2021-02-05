@@ -1,0 +1,1 @@
+{"1":{"Index":1,"Date":"2021-01-27T14:50:54.8784316+11:00","Sum":4.0,"Income":2.0,"Profit":3.0,"Turnover":5.0,"Note":"Privet"},"2":{"Index":1,"Date":"2021-01-27T14:50:54.8844318+11:00","Sum":4.0,"Income":2.0,"Profit":3.0,"Turnover":5.0,"Note":"Privet2"}}

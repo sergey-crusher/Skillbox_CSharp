@@ -1,0 +1,13 @@
+D:\Git\Skillbox_CSharp\7. Diary\7. Diary\bin\Debug\_7.Diary.exe.config
+D:\Git\Skillbox_CSharp\7. Diary\7. Diary\bin\Debug\_7.Diary.exe
+D:\Git\Skillbox_CSharp\7. Diary\7. Diary\bin\Debug\_7.Diary.pdb
+D:\Git\Skillbox_CSharp\7. Diary\7. Diary\obj\Debug\7. Diary.csprojAssemblyReference.cache
+D:\Git\Skillbox_CSharp\7. Diary\7. Diary\obj\Debug\_7.Diary.Properties.Resources.resources
+D:\Git\Skillbox_CSharp\7. Diary\7. Diary\obj\Debug\7. Diary.csproj.GenerateResource.cache
+D:\Git\Skillbox_CSharp\7. Diary\7. Diary\obj\Debug\7. Diary.csproj.CoreCompileInputs.cache
+D:\Git\Skillbox_CSharp\7. Diary\7. Diary\obj\Debug\_7.Diary.exe
+D:\Git\Skillbox_CSharp\7. Diary\7. Diary\obj\Debug\_7.Diary.pdb
+D:\Git\Skillbox_CSharp\7. Diary\7. Diary\bin\Debug\Newtonsoft.Json.dll
+D:\Git\Skillbox_CSharp\7. Diary\7. Diary\bin\Debug\Newtonsoft.Json.xml
+D:\Git\Skillbox_CSharp\7. Diary\7. Diary\obj\Debug\_7.Diary.Form.resources
+D:\Git\Skillbox_CSharp\7. Diary\7. Diary\obj\Debug\7. Diary.csproj.CopyComplete
