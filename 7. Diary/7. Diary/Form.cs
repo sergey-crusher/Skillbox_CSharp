@@ -20,7 +20,6 @@ namespace _7.Diary
         List <ToolStripMenuItem> toolStripMenuItems = new List<ToolStripMenuItem>();
 
         /* Форма */
-
         public Form()
         {
             InitializeComponent();
@@ -48,7 +47,6 @@ namespace _7.Diary
         }
 
         /* Файл */
-
         /// <summary>
         /// Выгрузка файла
         /// </summary>
@@ -66,7 +64,7 @@ namespace _7.Diary
         /// <summary>
         /// Загрузка файла
         /// </summary>
-        public List<Diary> Download()
+        List<Diary> Download()
         {
             //вызываем диалоговое окно открытия файла
             if (openFileDialog1.ShowDialog() == DialogResult.Cancel)
