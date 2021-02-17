@@ -76,17 +76,17 @@ namespace _7.Diary
         private void выгрузкиДаннахВФайлToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //считываем данные с таблицы
-            try
-            {
+            //try
+            //{
                 Interface.Grid2Diary(dataGridView1);
                 //вызываем диалоговое окно сохранения файла
                 if (saveFileDialog1.ShowDialog() != DialogResult.Cancel)
                     Interface.Upload(saveFileDialog1.FileName);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Убедитесь в правильности вводимых данных: \r\n" + ex.Message);
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("Убедитесь в правильности вводимых данных: \r\n" + ex.Message);
+            //}
         }
 
         private void добавленияДанныхВТекущийЕжедневникИзВыбранногоФайлаToolStripMenuItem_Click(object sender, EventArgs e)
@@ -207,10 +207,14 @@ namespace _7.Diary
 
             if (e.RowIndex > -1)
             {
-                Regex floatReg = new Regex(@"^((0|[1-9])\d*[.]\d+)$");
-                Regex intReg = new Regex(@"^(\d*)$");
+                //Regex floatReg = new Regex(@"^((0|[1-9])\d*[.]\d+)$");
+                //Regex intReg = new Regex(@"^(\d*)$");
                 //не спасёт от 32 января, для всего остального есть try/catch
-                Regex dateReg = new Regex(@"^(([0-3])\d{1}.([0-1])\d{1}.(0|[1-9])\d{3}[\s](0|[1-2])\d{1}:(0|[1-59])\d{1}:(0|[1-59])\d{1}$)");
+                //Regex dateReg = new Regex(@"^(([0-3])\d{1}.([0-1])\d{1}.(0|[1-9])\d{3}[\s](0|[1-2])\d{1}:(0|[1-59])\d{1}:(0|[1-59])\d{1})$");
+                //dateReg = new Regex(@"^(?<day>\d{1,2}).(?<month>\d{1,2}).(?<year>{2,4})([\s](0|[1-2])\d{1}:(0|[1-59])\d{1}:(0|[1-59])\d{1})$");
+
+                float floatTemp;
+                DateTime dateTimeTemp;
 
                 if (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
                 {
@@ -221,7 +225,8 @@ namespace _7.Diary
                     {
                         case 1:
                             {
-                                if (!dateReg.IsMatch(value))
+                                //if (!dateReg.IsMatch(value))
+                                if (!DateTime.TryParse(value, out dateTimeTemp))
                                 {
                                     switchGrid(false);
                                     MessageBox.Show("Укажите дату в формате ДД.ММ.ГГГГ чч:мм:сс");
@@ -234,7 +239,8 @@ namespace _7.Diary
                             }
                         case 2: case 3: case 4: case 5:
                             {
-                                if (!floatReg.IsMatch(value) && !intReg.IsMatch(value))
+                                //if (!floatReg.IsMatch(value) && !intReg.IsMatch(value))
+                                if (!float.TryParse(value, out floatTemp))
                                 {
                                     switchGrid(false);
                                     MessageBox.Show("Укажите число с плавающей точкой");
