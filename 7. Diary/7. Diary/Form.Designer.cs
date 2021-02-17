@@ -83,10 +83,12 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.White;
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(1164, 456);
             this.dataGridView1.TabIndex = 1;
+            this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
             this.dataGridView1.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dataGridView1_RowsAdded);
             this.dataGridView1.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.dataGridView1_RowsRemoved);
             // 
@@ -143,7 +145,7 @@
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 31);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 28);
             // 
             // toolStrip1
             // 
@@ -222,49 +224,49 @@
             // 
             this.начальнаяДатаToolStripMenuItem.Enabled = false;
             this.начальнаяДатаToolStripMenuItem.Name = "начальнаяДатаToolStripMenuItem";
-            this.начальнаяДатаToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.начальнаяДатаToolStripMenuItem.Size = new System.Drawing.Size(207, 26);
             this.начальнаяДатаToolStripMenuItem.Text = "Начальная дата";
             // 
             // start
             // 
             this.start.Name = "start";
-            this.start.Size = new System.Drawing.Size(224, 26);
+            this.start.Size = new System.Drawing.Size(207, 26);
             this.start.Text = "01.05.2018";
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(221, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(204, 6);
             // 
             // конечнаяДатаToolStripMenuItem
             // 
             this.конечнаяДатаToolStripMenuItem.Enabled = false;
             this.конечнаяДатаToolStripMenuItem.Name = "конечнаяДатаToolStripMenuItem";
-            this.конечнаяДатаToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.конечнаяДатаToolStripMenuItem.Size = new System.Drawing.Size(207, 26);
             this.конечнаяДатаToolStripMenuItem.Text = "Конечная дата";
             // 
             // end
             // 
             this.end.Name = "end";
-            this.end.Size = new System.Drawing.Size(224, 26);
+            this.end.Size = new System.Drawing.Size(207, 26);
             this.end.Text = "15.02.2019";
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(221, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(204, 6);
             // 
             // ImportByDate
             // 
             this.ImportByDate.Name = "ImportByDate";
-            this.ImportByDate.Size = new System.Drawing.Size(224, 26);
+            this.ImportByDate.Size = new System.Drawing.Size(207, 26);
             this.ImportByDate.Text = "Импорт";
             this.ImportByDate.Click += new System.EventHandler(this.ImportByDate_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 31);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 28);
             // 
             // toolStripDropDownButton2
             // 
@@ -275,7 +277,7 @@
             this.toolStripDropDownButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton2.Image")));
             this.toolStripDropDownButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripDropDownButton2.Name = "toolStripDropDownButton2";
-            this.toolStripDropDownButton2.Size = new System.Drawing.Size(76, 28);
+            this.toolStripDropDownButton2.Size = new System.Drawing.Size(76, 25);
             this.toolStripDropDownButton2.Text = "Правка";
             // 
             // AddRow
@@ -322,7 +324,7 @@
             // 
             this.Sort.Enabled = false;
             this.Sort.Name = "Sort";
-            this.Sort.Size = new System.Drawing.Size(224, 26);
+            this.Sort.Size = new System.Drawing.Size(195, 26);
             this.Sort.Text = "Применить";
             this.Sort.Click += new System.EventHandler(this.Sort_Click);
             // 

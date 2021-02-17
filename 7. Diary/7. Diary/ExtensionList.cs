@@ -44,15 +44,23 @@ namespace _7.Diary
             list.Clear();
             foreach (DataGridViewRow elem in grid)
             {
-                list.Add(new Diary(
-                    int.Parse(Validation(elem.Cells["Index"])),
-                    DateTime.Parse(Validation(elem.Cells["Date"], DateTime.Now.ToString())),
-                    float.Parse(Validation(elem.Cells["Sum"])),
-                    float.Parse(Validation(elem.Cells["Income"])),
-                    float.Parse(Validation(elem.Cells["Profit"])),
-                    float.Parse(Validation(elem.Cells["Turnover"])),
-                    Validation(elem.Cells["Note"], "Замечания отсутствуют")
-                ));
+                //try
+                {
+                    list.Add(new Diary(
+                        int.Parse(Validation(elem.Cells["Index"])),
+                        DateTime.Parse(Validation(elem.Cells["Date"], DateTime.Now.ToString())),
+                        float.Parse(Validation(elem.Cells["Sum"])),
+                        float.Parse(Validation(elem.Cells["Income"])),
+                        float.Parse(Validation(elem.Cells["Profit"])),
+                        float.Parse(Validation(elem.Cells["Turnover"])),
+                        Validation(elem.Cells["Note"], "Замечания отсутствуют")
+                    ));
+                }
+                //catch (Exception e)
+                {
+                    //MessageBox.Show("Убедитесь в правильности вводимых данных: \r\n" + e.Message);
+                    //return;
+                }
             };
         }
 
