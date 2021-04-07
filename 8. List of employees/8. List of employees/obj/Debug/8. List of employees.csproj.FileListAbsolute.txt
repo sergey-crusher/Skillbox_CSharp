@@ -1,0 +1,11 @@
+D:\Git\Skillbox_CSharp\8. List of employees\8. List of employees\bin\Debug\_8.List_of_employees.exe.config
+D:\Git\Skillbox_CSharp\8. List of employees\8. List of employees\bin\Debug\_8.List_of_employees.exe
+D:\Git\Skillbox_CSharp\8. List of employees\8. List of employees\bin\Debug\_8.List_of_employees.pdb
+D:\Git\Skillbox_CSharp\8. List of employees\8. List of employees\obj\Debug\8. List of employees.csprojAssemblyReference.cache
+D:\Git\Skillbox_CSharp\8. List of employees\8. List of employees\obj\Debug\_8.List_of_employees.Properties.Resources.resources
+D:\Git\Skillbox_CSharp\8. List of employees\8. List of employees\obj\Debug\8. List of employees.csproj.GenerateResource.cache
+D:\Git\Skillbox_CSharp\8. List of employees\8. List of employees\obj\Debug\8. List of employees.csproj.CoreCompileInputs.cache
+D:\Git\Skillbox_CSharp\8. List of employees\8. List of employees\obj\Debug\_8.List_of_employees.exe
+D:\Git\Skillbox_CSharp\8. List of employees\8. List of employees\obj\Debug\_8.List_of_employees.pdb
+D:\Git\Skillbox_CSharp\8. List of employees\8. List of employees\obj\Debug\_8.List_of_employees.FormDepartment.resources
+D:\Git\Skillbox_CSharp\8. List of employees\8. List of employees\obj\Debug\_8.List_of_employees.MainForm.resources
