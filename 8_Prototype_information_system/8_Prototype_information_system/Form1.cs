@@ -222,20 +222,22 @@ namespace _8_Prototype_information_system
         {
             for (int i=0; i<dataGridView.Rows.Count; i++)
             {
-                for (int j = 0; j < dataGridView.Rows[i].Cells.Count; j++)
+                //Проверка на наличие данных
+                if (dataGridView.Rows[i].Cells[0].Value == null ||
+                    dataGridView.Rows[i].Cells[1].Value == null ||
+                    dataGridView.Rows[i].Cells[2].Value == null ||
+                    dataGridView.Rows[i].Cells[4].Value == null)
                 {
-                    //Проверка на наличие данных
-                    if (dataGridView.Rows[i].Cells[0].Value == null ||
-                        dataGridView.Rows[i].Cells[1].Value == null ||
-                        dataGridView.Rows[i].Cells[2].Value == null ||
-                        dataGridView.Rows[i].Cells[4].Value == null)
-                    {
-                        MessageBox.Show("Заполнены не все поля пользователей");
-                        return;
-                    }
-                    //Проверка на корректность
-                    if (long.Parse()
-
+                    MessageBox.Show("Заполнены не все поля пользователей");
+                    return;
+                }
+                //Проверка на корректность
+                int checkInt;
+                if (!int.TryParse(dataGridView.Rows[i].Cells[2].Value.ToString(), out checkInt) ||
+                    !int.TryParse(dataGridView.Rows[i].Cells[4].Value.ToString(), out checkInt))
+                {
+                    MessageBox.Show("В полях с цифровыми значениями указаны иные символы");
+                    return;
                 }
             }
 
