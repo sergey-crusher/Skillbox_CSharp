@@ -224,6 +224,7 @@ namespace _8_Prototype_information_system
             {
                 for (int j = 0; j < dataGridView.Rows[i].Cells.Count; j++)
                 {
+                    //Проверка на наличие данных
                     if (dataGridView.Rows[i].Cells[0].Value == null ||
                         dataGridView.Rows[i].Cells[1].Value == null ||
                         dataGridView.Rows[i].Cells[2].Value == null ||
@@ -232,6 +233,8 @@ namespace _8_Prototype_information_system
                         MessageBox.Show("Заполнены не все поля пользователей");
                         return;
                     }
+                    //Проверка на корректность
+                    if (long.Parse()
 
                 }
             }
