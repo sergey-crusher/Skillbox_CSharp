@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<ArrayOfDepartment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Department>
+    <id>0</id>
+    <name>Головное отделение</name>
+    <dateTime>2021-05-15T20:51:09.6740605+11:00</dateTime>
+    <employees>
+      <Employees>
+        <id>637567381154682442</id>
+        <surname>Главный</surname>
+        <name>Сотрудник</name>
+        <age>18</age>
+        <salary>12</salary>
+      </Employees>
+    </employees>
+    <departments>
+      <Department>
+        <id>1</id>
+        <name>IT отдел</name>
+        <dateTime>2021-05-14T20:51:09.6760606+11:00</dateTime>
+        <employees>
+          <Employees>
+            <id>637567344079166071</id>
+            <surname>Алешин</surname>
+            <name>Сергей</name>
+            <age>26</age>
+            <salary>300000</salary>
+          </Employees>
+          <Employees>
+            <id>637567344079166071</id>
+            <surname>Ещё</surname>
+            <name>Кто-то</name>
+            <age>31</age>
+            <salary>50000</salary>
+          </Employees>
+        </employees>
+        <departments>
+          <Department>
+            <id>3</id>
+            <name>C# разработчики</name>
+            <dateTime>2021-05-12T20:51:09.6760606+11:00</dateTime>
+            <employees />
+            <departments />
+          </Department>
+        </departments>
+      </Department>
+      <Department>
+        <id>2</id>
+        <name>Бухгалтерия</name>
+        <dateTime>2021-05-13T20:51:09.6760606+11:00</dateTime>
+        <employees />
+        <departments />
+      </Department>
+    </departments>
+  </Department>
+  <Department>
+    <id>4</id>
+    <name>Доп. офис</name>
+    <dateTime>2021-05-11T20:51:09.6760606+11:00</dateTime>
+    <employees>
+      <Employees>
+        <id>637567342374131523</id>
+        <surname>test</surname>
+        <name>name</name>
+        <age>18</age>
+        <salary>200000</salary>
+      </Employees>
+    </employees>
+    <departments />
+  </Department>
+  <Department>
+    <id>637568750689859902</id>
+    <name>Новое отделение</name>
+    <dateTime>2021-05-01T19:11:20</dateTime>
+    <employees />
+    <departments />
+  </Department>
+</ArrayOfDepartment>

@@ -44,43 +44,49 @@ namespace _8_Prototype_information_system
             this.сохранитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.форматJSONToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.форматXMLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.поУмолчаниюToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.defaultPath = new System.Windows.Forms.ToolStripTextBox();
             this.отделенияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.добавитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.удалитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.сотрудникиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.добавитьToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.удалитьToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.сортировкаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripComboBoxSort = new System.Windows.Forms.ToolStripComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.TreeDepartments = new System.Windows.Forms.TreeView();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridView = new System.Windows.Forms.DataGridView();
             this.surname = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.firstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.age = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.salary = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.localSave = new System.Windows.Forms.Button();
+            this.employeesDepartment = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimeDepartment = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
             this.nameDepartment = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.CreateDepartment = new System.Windows.Forms.Panel();
             this.CreateDepartmentCheckRoot = new System.Windows.Forms.CheckBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.CreateDepartmentParent = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.CreateDepartmentButton = new System.Windows.Forms.Button();
             this.CreateDepartmentDateTime = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
             this.CreateDepartmentName = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.menu.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.panel3.SuspendLayout();
             this.CreateDepartment.SuspendLayout();
             this.SuspendLayout();
@@ -104,7 +110,8 @@ namespace _8_Prototype_information_system
             // 
             this.файлToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.загрузитьToolStripMenuItem,
-            this.сохранитьToolStripMenuItem});
+            this.сохранитьToolStripMenuItem,
+            this.поУмолчаниюToolStripMenuItem});
             this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
             this.файлToolStripMenuItem.Size = new System.Drawing.Size(64, 27);
             this.файлToolStripMenuItem.Text = "Файл";
@@ -112,8 +119,9 @@ namespace _8_Prototype_information_system
             // загрузитьToolStripMenuItem
             // 
             this.загрузитьToolStripMenuItem.Name = "загрузитьToolStripMenuItem";
-            this.загрузитьToolStripMenuItem.Size = new System.Drawing.Size(178, 28);
+            this.загрузитьToolStripMenuItem.Size = new System.Drawing.Size(213, 28);
             this.загрузитьToolStripMenuItem.Text = "Загрузить";
+            this.загрузитьToolStripMenuItem.Click += new System.EventHandler(this.загрузитьToolStripMenuItem_Click);
             // 
             // сохранитьToolStripMenuItem
             // 
@@ -121,7 +129,7 @@ namespace _8_Prototype_information_system
             this.форматJSONToolStripMenuItem,
             this.форматXMLToolStripMenuItem});
             this.сохранитьToolStripMenuItem.Name = "сохранитьToolStripMenuItem";
-            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(178, 28);
+            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(213, 28);
             this.сохранитьToolStripMenuItem.Text = "Сохранить";
             // 
             // форматJSONToolStripMenuItem
@@ -129,12 +137,29 @@ namespace _8_Prototype_information_system
             this.форматJSONToolStripMenuItem.Name = "форматJSONToolStripMenuItem";
             this.форматJSONToolStripMenuItem.Size = new System.Drawing.Size(200, 28);
             this.форматJSONToolStripMenuItem.Text = "Формат JSON";
+            this.форматJSONToolStripMenuItem.Click += new System.EventHandler(this.форматJSONToolStripMenuItem_Click);
             // 
             // форматXMLToolStripMenuItem
             // 
             this.форматXMLToolStripMenuItem.Name = "форматXMLToolStripMenuItem";
             this.форматXMLToolStripMenuItem.Size = new System.Drawing.Size(200, 28);
             this.форматXMLToolStripMenuItem.Text = "Формат XML";
+            this.форматXMLToolStripMenuItem.Click += new System.EventHandler(this.форматXMLToolStripMenuItem_Click);
+            // 
+            // поУмолчаниюToolStripMenuItem
+            // 
+            this.поУмолчаниюToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.defaultPath});
+            this.поУмолчаниюToolStripMenuItem.Name = "поУмолчаниюToolStripMenuItem";
+            this.поУмолчаниюToolStripMenuItem.Size = new System.Drawing.Size(213, 28);
+            this.поУмолчаниюToolStripMenuItem.Text = "По умолчанию";
+            // 
+            // defaultPath
+            // 
+            this.defaultPath.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.defaultPath.Name = "defaultPath";
+            this.defaultPath.Size = new System.Drawing.Size(100, 27);
+            this.defaultPath.Text = "data.json";
             // 
             // отделенияToolStripMenuItem
             // 
@@ -157,12 +182,14 @@ namespace _8_Prototype_information_system
             this.удалитьToolStripMenuItem.Name = "удалитьToolStripMenuItem";
             this.удалитьToolStripMenuItem.Size = new System.Drawing.Size(170, 28);
             this.удалитьToolStripMenuItem.Text = "Удалить";
+            this.удалитьToolStripMenuItem.Click += new System.EventHandler(this.удалитьToolStripMenuItem_Click);
             // 
             // сотрудникиToolStripMenuItem
             // 
             this.сотрудникиToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.добавитьToolStripMenuItem1,
-            this.удалитьToolStripMenuItem1});
+            this.удалитьToolStripMenuItem1,
+            this.сортировкаToolStripMenuItem});
             this.сотрудникиToolStripMenuItem.Name = "сотрудникиToolStripMenuItem";
             this.сотрудникиToolStripMenuItem.Size = new System.Drawing.Size(117, 27);
             this.сотрудникиToolStripMenuItem.Text = "Сотрудники";
@@ -170,14 +197,37 @@ namespace _8_Prototype_information_system
             // добавитьToolStripMenuItem1
             // 
             this.добавитьToolStripMenuItem1.Name = "добавитьToolStripMenuItem1";
-            this.добавитьToolStripMenuItem1.Size = new System.Drawing.Size(170, 28);
+            this.добавитьToolStripMenuItem1.Size = new System.Drawing.Size(224, 28);
             this.добавитьToolStripMenuItem1.Text = "Добавить";
+            this.добавитьToolStripMenuItem1.Click += new System.EventHandler(this.добавитьToolStripMenuItem1_Click);
             // 
             // удалитьToolStripMenuItem1
             // 
             this.удалитьToolStripMenuItem1.Name = "удалитьToolStripMenuItem1";
-            this.удалитьToolStripMenuItem1.Size = new System.Drawing.Size(170, 28);
+            this.удалитьToolStripMenuItem1.Size = new System.Drawing.Size(224, 28);
             this.удалитьToolStripMenuItem1.Text = "Удалить";
+            this.удалитьToolStripMenuItem1.Click += new System.EventHandler(this.удалитьToolStripMenuItem1_Click);
+            // 
+            // сортировкаToolStripMenuItem
+            // 
+            this.сортировкаToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripComboBoxSort});
+            this.сортировкаToolStripMenuItem.Name = "сортировкаToolStripMenuItem";
+            this.сортировкаToolStripMenuItem.Size = new System.Drawing.Size(224, 28);
+            this.сортировкаToolStripMenuItem.Text = "Сортировка";
+            // 
+            // toolStripComboBoxSort
+            // 
+            this.toolStripComboBoxSort.Items.AddRange(new object[] {
+            "Фамилия",
+            "Имя",
+            "Возраст",
+            "Идентификатор",
+            "Зарплата"});
+            this.toolStripComboBoxSort.Name = "toolStripComboBoxSort";
+            this.toolStripComboBoxSort.Size = new System.Drawing.Size(121, 28);
+            this.toolStripComboBoxSort.Text = "Фамилия";
+            this.toolStripComboBoxSort.SelectedIndexChanged += new System.EventHandler(this.toolStripComboBoxSort_SelectedIndexChanged);
             // 
             // panel1
             // 
@@ -214,34 +264,35 @@ namespace _8_Prototype_information_system
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Controls.Add(this.dataGridView1);
+            this.panel2.Controls.Add(this.dataGridView);
             this.panel2.Location = new System.Drawing.Point(367, 79);
             this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(854, 346);
             this.panel2.TabIndex = 2;
             // 
-            // dataGridView1
+            // dataGridView
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridView.AllowUserToAddRows = false;
+            this.dataGridView.AllowUserToDeleteRows = false;
+            this.dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.surname,
             this.firstName,
             this.age,
             this.id,
             this.salary});
-            this.dataGridView1.Location = new System.Drawing.Point(5, 5);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
-            this.dataGridView1.MultiSelect = false;
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(843, 334);
-            this.dataGridView1.TabIndex = 0;
+            this.dataGridView.Location = new System.Drawing.Point(5, 5);
+            this.dataGridView.Margin = new System.Windows.Forms.Padding(4);
+            this.dataGridView.MultiSelect = false;
+            this.dataGridView.Name = "dataGridView";
+            this.dataGridView.RowHeadersVisible = false;
+            this.dataGridView.RowHeadersWidth = 51;
+            this.dataGridView.RowTemplate.Height = 24;
+            this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView.Size = new System.Drawing.Size(843, 334);
+            this.dataGridView.TabIndex = 0;
             // 
             // surname
             // 
@@ -266,6 +317,7 @@ namespace _8_Prototype_information_system
             this.id.HeaderText = "Идентификатор";
             this.id.MinimumWidth = 6;
             this.id.Name = "id";
+            this.id.ReadOnly = true;
             // 
             // salary
             // 
@@ -276,10 +328,10 @@ namespace _8_Prototype_information_system
             // panel3
             // 
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel3.Controls.Add(this.button1);
-            this.panel3.Controls.Add(this.textBox1);
+            this.panel3.Controls.Add(this.localSave);
+            this.panel3.Controls.Add(this.employeesDepartment);
             this.panel3.Controls.Add(this.label4);
-            this.panel3.Controls.Add(this.dateTimePicker1);
+            this.panel3.Controls.Add(this.dateTimeDepartment);
             this.panel3.Controls.Add(this.label3);
             this.panel3.Controls.Add(this.nameDepartment);
             this.panel3.Controls.Add(this.label2);
@@ -289,23 +341,24 @@ namespace _8_Prototype_information_system
             this.panel3.Size = new System.Drawing.Size(854, 38);
             this.panel3.TabIndex = 3;
             // 
-            // button1
+            // localSave
             // 
-            this.button1.BackgroundImage = global::_8_Prototype_information_system.Properties.Resources.edit;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button1.Location = new System.Drawing.Point(803, 4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(30, 29);
-            this.button1.TabIndex = 7;
-            this.button1.UseVisualStyleBackColor = true;
+            this.localSave.BackgroundImage = global::_8_Prototype_information_system.Properties.Resources.edit;
+            this.localSave.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.localSave.Location = new System.Drawing.Point(800, 3);
+            this.localSave.Name = "localSave";
+            this.localSave.Size = new System.Drawing.Size(30, 29);
+            this.localSave.TabIndex = 7;
+            this.localSave.UseVisualStyleBackColor = true;
+            this.localSave.Click += new System.EventHandler(this.localSave_Click);
             // 
-            // textBox1
+            // employeesDepartment
             // 
-            this.textBox1.Location = new System.Drawing.Point(715, 6);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(70, 27);
-            this.textBox1.TabIndex = 6;
+            this.employeesDepartment.Location = new System.Drawing.Point(715, 6);
+            this.employeesDepartment.Name = "employeesDepartment";
+            this.employeesDepartment.ReadOnly = true;
+            this.employeesDepartment.Size = new System.Drawing.Size(70, 27);
+            this.employeesDepartment.TabIndex = 6;
             // 
             // label4
             // 
@@ -316,12 +369,12 @@ namespace _8_Prototype_information_system
             this.label4.TabIndex = 5;
             this.label4.Text = "Сотрудников";
             // 
-            // dateTimePicker1
+            // dateTimeDepartment
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(388, 6);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 27);
-            this.dateTimePicker1.TabIndex = 4;
+            this.dateTimeDepartment.Location = new System.Drawing.Point(388, 6);
+            this.dateTimeDepartment.Name = "dateTimeDepartment";
+            this.dateTimeDepartment.Size = new System.Drawing.Size(200, 27);
+            this.dateTimeDepartment.TabIndex = 4;
             // 
             // label3
             // 
@@ -356,7 +409,7 @@ namespace _8_Prototype_information_system
             this.CreateDepartment.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.CreateDepartment.Controls.Add(this.CreateDepartmentCheckRoot);
             this.CreateDepartment.Controls.Add(this.label8);
-            this.CreateDepartment.Controls.Add(this.textBox2);
+            this.CreateDepartment.Controls.Add(this.CreateDepartmentParent);
             this.CreateDepartment.Controls.Add(this.label7);
             this.CreateDepartment.Controls.Add(this.CreateDepartmentButton);
             this.CreateDepartment.Controls.Add(this.CreateDepartmentDateTime);
@@ -394,16 +447,16 @@ namespace _8_Prototype_information_system
             this.label8.TabIndex = 7;
             this.label8.Text = "Корневое отделение";
             // 
-            // textBox2
+            // CreateDepartmentParent
             // 
-            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.CreateDepartmentParent.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox2.Location = new System.Drawing.Point(428, 68);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(260, 27);
-            this.textBox2.TabIndex = 6;
+            this.CreateDepartmentParent.Location = new System.Drawing.Point(428, 68);
+            this.CreateDepartmentParent.Name = "CreateDepartmentParent";
+            this.CreateDepartmentParent.ReadOnly = true;
+            this.CreateDepartmentParent.Size = new System.Drawing.Size(260, 27);
+            this.CreateDepartmentParent.TabIndex = 6;
             // 
             // label7
             // 
@@ -413,9 +466,9 @@ namespace _8_Prototype_information_system
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(222, 71);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(148, 20);
+            this.label7.Size = new System.Drawing.Size(187, 20);
             this.label7.TabIndex = 5;
-            this.label7.Text = "Родительское id";
+            this.label7.Text = "Родительский отдел";
             // 
             // CreateDepartmentButton
             // 
@@ -439,6 +492,7 @@ namespace _8_Prototype_information_system
             this.CreateDepartmentDateTime.Name = "CreateDepartmentDateTime";
             this.CreateDepartmentDateTime.Size = new System.Drawing.Size(260, 27);
             this.CreateDepartmentDateTime.TabIndex = 3;
+            this.CreateDepartmentDateTime.Value = new System.DateTime(2021, 5, 1, 19, 11, 20, 0);
             // 
             // label6
             // 
@@ -448,9 +502,9 @@ namespace _8_Prototype_information_system
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(222, 217);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(111, 20);
+            this.label6.Size = new System.Drawing.Size(137, 20);
             this.label6.TabIndex = 2;
-            this.label6.Text = "Дата/Время";
+            this.label6.Text = "Дата создания";
             // 
             // CreateDepartmentName
             // 
@@ -461,6 +515,7 @@ namespace _8_Prototype_information_system
             this.CreateDepartmentName.Name = "CreateDepartmentName";
             this.CreateDepartmentName.Size = new System.Drawing.Size(260, 27);
             this.CreateDepartmentName.TabIndex = 1;
+            this.CreateDepartmentName.Text = "Новое отделение";
             // 
             // label5
             // 
@@ -474,27 +529,34 @@ namespace _8_Prototype_information_system
             this.label5.TabIndex = 0;
             this.label5.Text = "Название отделения";
             // 
+            // openFileDialog
+            // 
+            this.openFileDialog.FileName = "openFileDialog";
+            // 
             // Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1234, 436);
             this.Controls.Add(this.panel3);
-            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menu);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.CreateDepartment);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menu;
             this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximumSize = new System.Drawing.Size(1252, 483);
+            this.MinimumSize = new System.Drawing.Size(1252, 483);
             this.Name = "Form";
             this.Text = "Прототип информационной системы для организации";
+            this.Load += new System.EventHandler(this.Form_Load);
             this.menu.ResumeLayout(false);
             this.menu.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.CreateDepartment.ResumeLayout(false);
@@ -511,12 +573,12 @@ namespace _8_Prototype_information_system
         private System.Windows.Forms.TreeView TreeDepartments;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DataGridView dataGridView;
+        private System.Windows.Forms.DateTimePicker dateTimeDepartment;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox nameDepartment;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox employeesDepartment;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ToolStripMenuItem файлToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem загрузитьToolStripMenuItem;
@@ -529,22 +591,28 @@ namespace _8_Prototype_information_system
         private System.Windows.Forms.ToolStripMenuItem сотрудникиToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem добавитьToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem удалитьToolStripMenuItem1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn surname;
-        private System.Windows.Forms.DataGridViewTextBoxColumn firstName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn age;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn salary;
         private System.Windows.Forms.Panel CreateDepartment;
         private System.Windows.Forms.DateTimePicker CreateDepartmentDateTime;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox CreateDepartmentName;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button CreateDepartmentButton;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox CreateDepartmentParent;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.CheckBox CreateDepartmentCheckRoot;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button localSave;
+        private System.Windows.Forms.DataGridViewTextBoxColumn surname;
+        private System.Windows.Forms.DataGridViewTextBoxColumn firstName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn age;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn salary;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog;
+        private System.Windows.Forms.OpenFileDialog openFileDialog;
+        private System.Windows.Forms.ToolStripMenuItem поУмолчаниюToolStripMenuItem;
+        private System.Windows.Forms.ToolStripTextBox defaultPath;
+        private System.Windows.Forms.ToolStripMenuItem сортировкаToolStripMenuItem;
+        private System.Windows.Forms.ToolStripComboBox toolStripComboBoxSort;
     }
 }
 
