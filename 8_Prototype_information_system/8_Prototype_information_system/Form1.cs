@@ -14,7 +14,6 @@ using Newtonsoft.Json;
 using System.Xml.Linq;
 using System.Runtime.Serialization.Json;
 using System.Xml.Serialization;
-using System.Text.RegularExpressions;
 
 namespace _8_Prototype_information_system
 {
@@ -273,32 +272,6 @@ namespace _8_Prototype_information_system
         #endregion
 
         #region Сохранение файлов
-        /// <summary>
-        /// Проверка ввода в ячейку
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void dataGridView_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-        {
-            //регулярное выражение, только цифры
-            Regex regex = new Regex("[0-9]");
-
-            //Для возраста и зарплаты
-            if ((e.ColumnIndex == 2 || e.ColumnIndex == 4) && e.RowIndex > -1)
-            {
-                var gv = dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex];
-                //проверяем чтобы были только числа
-                if (regex.IsMatch(gv.Value.ToString()))
-                {
-                    gv.Style.BackColor = Color.White;
-                }
-                else
-                {
-                    gv.Style.BackColor = Color.Tomato;
-                }
-            }
-        }
-
         /// <summary>
         /// Сохранение файла JSON
         /// </summary>

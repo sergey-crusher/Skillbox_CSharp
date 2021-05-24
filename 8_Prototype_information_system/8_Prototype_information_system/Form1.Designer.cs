@@ -156,7 +156,6 @@ namespace _8_Prototype_information_system
             // 
             // defaultPath
             // 
-            this.defaultPath.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.defaultPath.Name = "defaultPath";
             this.defaultPath.Size = new System.Drawing.Size(100, 27);
             this.defaultPath.Text = "data.json";
@@ -293,7 +292,6 @@ namespace _8_Prototype_information_system
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView.Size = new System.Drawing.Size(843, 334);
             this.dataGridView.TabIndex = 0;
-            this.dataGridView.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellValueChanged);
             // 
             // surname
             // 
@@ -539,11 +537,11 @@ namespace _8_Prototype_information_system
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1234, 436);
+            this.Controls.Add(this.CreateDepartment);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menu);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.CreateDepartment);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menu;
