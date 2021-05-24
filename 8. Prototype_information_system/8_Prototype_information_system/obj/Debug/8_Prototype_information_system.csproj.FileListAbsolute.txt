@@ -29,3 +29,34 @@ D:\Git\Skillbox_CSharp\8_Prototype_information_system\8_Prototype_information_sy
 D:\Git\Skillbox_CSharp\8_Prototype_information_system\8_Prototype_information_system\obj\Debug\8_Prototype_information_system.exe
 D:\Git\Skillbox_CSharp\8_Prototype_information_system\8_Prototype_information_system\obj\Debug\8_Prototype_information_system.pdb
 D:\Git\Skillbox_CSharp\8_Prototype_information_system\8_Prototype_information_system\obj\Debug\8_Prototype_information_system.csprojAssemblyReference.cache
+D:\Git\Skillbox_CSharp\8. Prototype_information_system\8_Prototype_information_system\bin\Debug\8_Prototype_information_system.exe.config
+D:\Git\Skillbox_CSharp\8. Prototype_information_system\8_Prototype_information_system\bin\Debug\8_Prototype_information_system.exe
+D:\Git\Skillbox_CSharp\8. Prototype_information_system\8_Prototype_information_system\bin\Debug\8_Prototype_information_system.pdb
+D:\Git\Skillbox_CSharp\8. Prototype_information_system\8_Prototype_information_system\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+D:\Git\Skillbox_CSharp\8. Prototype_information_system\8_Prototype_information_system\bin\Debug\Newtonsoft.Json.dll
+D:\Git\Skillbox_CSharp\8. Prototype_information_system\8_Prototype_information_system\bin\Debug\System.Buffers.dll
+D:\Git\Skillbox_CSharp\8. Prototype_information_system\8_Prototype_information_system\bin\Debug\System.Memory.dll
+D:\Git\Skillbox_CSharp\8. Prototype_information_system\8_Prototype_information_system\bin\Debug\System.Numerics.Vectors.dll
+D:\Git\Skillbox_CSharp\8. Prototype_information_system\8_Prototype_information_system\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+D:\Git\Skillbox_CSharp\8. Prototype_information_system\8_Prototype_information_system\bin\Debug\System.Text.Encodings.Web.dll
+D:\Git\Skillbox_CSharp\8. Prototype_information_system\8_Prototype_information_system\bin\Debug\System.Text.Json.dll
+D:\Git\Skillbox_CSharp\8. Prototype_information_system\8_Prototype_information_system\bin\Debug\System.Threading.Tasks.Extensions.dll
+D:\Git\Skillbox_CSharp\8. Prototype_information_system\8_Prototype_information_system\bin\Debug\System.ValueTuple.dll
+D:\Git\Skillbox_CSharp\8. Prototype_information_system\8_Prototype_information_system\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+D:\Git\Skillbox_CSharp\8. Prototype_information_system\8_Prototype_information_system\bin\Debug\Newtonsoft.Json.xml
+D:\Git\Skillbox_CSharp\8. Prototype_information_system\8_Prototype_information_system\bin\Debug\System.Buffers.xml
+D:\Git\Skillbox_CSharp\8. Prototype_information_system\8_Prototype_information_system\bin\Debug\System.Memory.xml
+D:\Git\Skillbox_CSharp\8. Prototype_information_system\8_Prototype_information_system\bin\Debug\System.Numerics.Vectors.xml
+D:\Git\Skillbox_CSharp\8. Prototype_information_system\8_Prototype_information_system\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+D:\Git\Skillbox_CSharp\8. Prototype_information_system\8_Prototype_information_system\bin\Debug\System.Text.Encodings.Web.xml
+D:\Git\Skillbox_CSharp\8. Prototype_information_system\8_Prototype_information_system\bin\Debug\System.Text.Json.xml
+D:\Git\Skillbox_CSharp\8. Prototype_information_system\8_Prototype_information_system\bin\Debug\System.Threading.Tasks.Extensions.xml
+D:\Git\Skillbox_CSharp\8. Prototype_information_system\8_Prototype_information_system\bin\Debug\System.ValueTuple.xml
+D:\Git\Skillbox_CSharp\8. Prototype_information_system\8_Prototype_information_system\obj\Debug\8_Prototype_information_system.csprojAssemblyReference.cache
+D:\Git\Skillbox_CSharp\8. Prototype_information_system\8_Prototype_information_system\obj\Debug\_8_Prototype_information_system.Form.resources
+D:\Git\Skillbox_CSharp\8. Prototype_information_system\8_Prototype_information_system\obj\Debug\_8_Prototype_information_system.Properties.Resources.resources
+D:\Git\Skillbox_CSharp\8. Prototype_information_system\8_Prototype_information_system\obj\Debug\8_Prototype_information_system.csproj.GenerateResource.cache
+D:\Git\Skillbox_CSharp\8. Prototype_information_system\8_Prototype_information_system\obj\Debug\8_Prototype_information_system.csproj.CoreCompileInputs.cache
+D:\Git\Skillbox_CSharp\8. Prototype_information_system\8_Prototype_information_system\obj\Debug\8_Prototype_information_system.csproj.CopyComplete
+D:\Git\Skillbox_CSharp\8. Prototype_information_system\8_Prototype_information_system\obj\Debug\8_Prototype_information_system.exe
+D:\Git\Skillbox_CSharp\8. Prototype_information_system\8_Prototype_information_system\obj\Debug\8_Prototype_information_system.pdb
