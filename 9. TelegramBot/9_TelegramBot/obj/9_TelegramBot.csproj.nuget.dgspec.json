@@ -44,17 +44,9 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "dependencies": {
-            "Fizzler.Systems.HtmlAgilityPack": {
+            "PlaceholderBlock": {
               "target": "Package",
-              "version": "[1.2.1, )"
-            },
-            "HtmlAgilityPack": {
-              "target": "Package",
-              "version": "[1.11.33, )"
-            },
-            "Telegram.Bot": {
-              "target": "Package",
-              "version": "[15.7.1, )"
+              "version": "[1.0.1, )"
             }
           },
           "imports": [
@@ -70,9 +62,12 @@
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
+            },
+            "Microsoft.WindowsDesktop.App.WPF": {
+              "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
         }
       }
     }

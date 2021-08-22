@@ -1,0 +1,28 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "PlaceholderBlock/1.0.1": {
+        "runtime": {
+          "lib/netcoreapp3.1/PlaceholderCore.dll": {
+            "assemblyVersion": "1.0.1.0",
+            "fileVersion": "1.0.1.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "PlaceholderBlock/1.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-yx88cWe2MVn8eYOgyLrUOpJynRkYrH3uW6hH8C6Dd3F4gN/rFAGGBb2XqtMCs9PAoGm9eqhGivIVoqKz/YXMMA==",
+      "path": "placeholderblock/1.0.1",
+      "hashPath": "placeholderblock.1.0.1.nupkg.sha512"
+    }
+  }
+}

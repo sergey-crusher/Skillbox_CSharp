@@ -1,0 +1,17 @@
+D:\Git\Skillbox_CSharp\9. TelegramBot\_9_TelegramBot\bin\Debug\_9_TelegramBot.exe.config
+D:\Git\Skillbox_CSharp\9. TelegramBot\_9_TelegramBot\bin\Debug\_9_TelegramBot.exe
+D:\Git\Skillbox_CSharp\9. TelegramBot\_9_TelegramBot\bin\Debug\_9_TelegramBot.pdb
+D:\Git\Skillbox_CSharp\9. TelegramBot\_9_TelegramBot\obj\Debug\MainWindow.g.cs
+D:\Git\Skillbox_CSharp\9. TelegramBot\_9_TelegramBot\obj\Debug\App.g.cs
+D:\Git\Skillbox_CSharp\9. TelegramBot\_9_TelegramBot\obj\Debug\_9_TelegramBot_MarkupCompile.cache
+D:\Git\Skillbox_CSharp\9. TelegramBot\_9_TelegramBot\obj\Debug\MainWindow.baml
+D:\Git\Skillbox_CSharp\9. TelegramBot\_9_TelegramBot\obj\Debug\_9_TelegramBot.g.resources
+D:\Git\Skillbox_CSharp\9. TelegramBot\_9_TelegramBot\obj\Debug\_9_TelegramBot.Properties.Resources.resources
+D:\Git\Skillbox_CSharp\9. TelegramBot\_9_TelegramBot\obj\Debug\_9_TelegramBot.csproj.GenerateResource.cache
+D:\Git\Skillbox_CSharp\9. TelegramBot\_9_TelegramBot\obj\Debug\_9_TelegramBot.csproj.CoreCompileInputs.cache
+D:\Git\Skillbox_CSharp\9. TelegramBot\_9_TelegramBot\obj\Debug\_9_TelegramBot.exe
+D:\Git\Skillbox_CSharp\9. TelegramBot\_9_TelegramBot\obj\Debug\_9_TelegramBot.pdb
+D:\Git\Skillbox_CSharp\9. TelegramBot\_9_TelegramBot\obj\Debug\_9_TelegramBot.csproj.CopyComplete
+D:\Git\Skillbox_CSharp\9. TelegramBot\_9_TelegramBot\obj\Debug\_9_TelegramBot.csproj.AssemblyReference.cache
+D:\Git\Skillbox_CSharp\9. TelegramBot\_9_TelegramBot\bin\Debug\PlaceholderCore.dll
+D:\Git\Skillbox_CSharp\9. TelegramBot\_9_TelegramBot\bin\Debug\PlaceholderCore.pdb

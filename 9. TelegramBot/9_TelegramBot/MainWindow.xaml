@@ -1,0 +1,85 @@
+﻿<Window x:Class="_9_TelegramBot.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:placeholder="clr-namespace:Placeholder;assembly=PlaceholderCore"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="900" Visibility="Visible"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Name="WinForm">
+    <Window.Resources>
+        <!--#region Стили и эффекты-->
+        <Style x:Key="BlurEffect">
+            <Style.Setters>
+            </Style.Setters>
+            <Style.Triggers>
+                <Trigger Property="Image.IsMouseOver" Value="True">
+                    <Setter Property="Image.Effect">
+                        <Setter.Value>
+                            <BlurEffect Radius="3"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <!--#endregion-->
+    </Window.Resources>
+    
+    <Grid>
+        <!--#region Разметка -->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20*"/>
+            <ColumnDefinition Width="60*"/>
+            <ColumnDefinition Width="20*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Name="FormTop" Height="20"/>
+            <RowDefinition Name="FromControl" Height="45"/>
+            <RowDefinition Name="FormContent"/>
+        </Grid.RowDefinitions>
+        <!--#endregion-->
+
+        <!--#region Шапка -->
+        <WrapPanel Name="WinPanel" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Background="#242F3D" FlowDirection="RightToLeft" MouseLeftButtonDown="WinPanel_MouseLeftButtonDown">
+            <Image Name="WinClose" Style="{StaticResource BlurEffect}" Source="Resources/close.gif" Margin="4" MouseDown="WinClose_MouseDown"/>
+            <Image Name="WinMaximized" Style="{StaticResource BlurEffect}" Source="Resources/maximized.gif" Margin="4" MouseDown="WinMaximized_MouseDown"/>
+            <Image Name="WinMinimize" Style="{StaticResource BlurEffect}" Source="Resources/minimize.gif" Margin="4" MouseDown="WinMinimize_MouseDown"/>
+        </WrapPanel>
+        <!--#endregion-->
+
+        <!--#region Управление-->
+        <WrapPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Background="#17212B">
+            <Image Grid.Row="1" Grid.Column="0" Source="Resources/menu.gif" Margin="15" HorizontalAlignment="Left" Style="{StaticResource BlurEffect}"/>
+            <placeholder:PlaceholderBlock Name="PHBlock" SizeFont="14" Width="100" Height="25" Placeholder="Search"/>
+        </WrapPanel>
+        <!--#endregion-->
+
+        <!-- Контент-->
+        <!--#region Телефонная книга-->
+        <WrapPanel Name="WPPhoneBook" Grid.Row="2" Grid.Column="0" Background="#17212B" Visibility="Hidden">
+            <DataGrid Width="150" Height="300" HeadersVisibility="None">
+                <DataGrid.Columns >
+                    <DataGridTextColumn Binding="{Binding Path=Title}" Width="20" />
+                    <DataGridTextColumn Binding="{Binding Path=Company}" Width="80" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </WrapPanel>
+        
+        <!--#region Меню -->
+        <WrapPanel Name="WPMenu" Grid.Row="1" Grid.Column="0" Grid.RowSpan="2" Background="#17212B" Visibility="Visible"  Orientation="Vertical">
+            <WrapPanel>
+                
+            </WrapPanel>
+            <WrapPanel>
+                <Image Margin="20 0 0 0" Width="20" Source="Resources/close.gif"/>
+                <TextBlock Margin="20 0 0 0" FontSize="14" Foreground="White">123</TextBlock>
+            </WrapPanel>
+        </WrapPanel>
+        <!--#endregion-->
+        <WrapPanel Grid.Row="2" Grid.Column="1" Background="#0E1621"/>
+        <WrapPanel Grid.Row="2" Grid.Column="2" Background="#17212B"/>
+        <!--#endregion-->
+    </Grid>
+</Window>
