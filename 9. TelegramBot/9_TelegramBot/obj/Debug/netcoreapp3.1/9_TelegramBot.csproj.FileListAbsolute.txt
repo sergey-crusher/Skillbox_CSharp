@@ -17,4 +17,6 @@ D:\Git\Skillbox_CSharp\9. TelegramBot\9_TelegramBot\obj\Debug\netcoreapp3.1\9_Te
 D:\Git\Skillbox_CSharp\9. TelegramBot\9_TelegramBot\obj\Debug\netcoreapp3.1\9_TelegramBot.genruntimeconfig.cache
 D:\Git\Skillbox_CSharp\9. TelegramBot\9_TelegramBot\bin\Debug\netcoreapp3.1\PlaceholderCore.dll
 D:\Git\Skillbox_CSharp\9. TelegramBot\9_TelegramBot\obj\Debug\netcoreapp3.1\9_TelegramBot.csproj.CopyComplete
+D:\Git\Skillbox_CSharp\9. TelegramBot\9_TelegramBot\obj\Debug\netcoreapp3.1\9_TelegramBot_MarkupCompile.lref
+D:\Git\Skillbox_CSharp\9. TelegramBot\9_TelegramBot\obj\Debug\netcoreapp3.1\GeneratedInternalTypeHelper.g.cs
 D:\Git\Skillbox_CSharp\9. TelegramBot\9_TelegramBot\obj\Debug\netcoreapp3.1\9_TelegramBot.csproj.AssemblyReference.cache

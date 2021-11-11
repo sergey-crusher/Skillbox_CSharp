@@ -6,23 +6,23 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v3.1": {
-      "PlaceholderBlock/1.0.1": {
+      "PlaceholderBlock/1.0.3": {
         "runtime": {
           "lib/netcoreapp3.1/PlaceholderCore.dll": {
-            "assemblyVersion": "1.0.1.0",
-            "fileVersion": "1.0.1.0"
+            "assemblyVersion": "1.0.3.0",
+            "fileVersion": "1.0.3.0"
           }
         }
       }
     }
   },
   "libraries": {
-    "PlaceholderBlock/1.0.1": {
+    "PlaceholderBlock/1.0.3": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-yx88cWe2MVn8eYOgyLrUOpJynRkYrH3uW6hH8C6Dd3F4gN/rFAGGBb2XqtMCs9PAoGm9eqhGivIVoqKz/YXMMA==",
-      "path": "placeholderblock/1.0.1",
-      "hashPath": "placeholderblock.1.0.1.nupkg.sha512"
+      "sha512": "sha512-kB26ppnzOgVUA3YJV2Or7OIv2CX6tTn6rrXEeITyvZoND++Rpjg/BrrJBpVRekvSg38raJCkZ9LXusNreD9MSg==",
+      "path": "placeholderblock/1.0.3",
+      "hashPath": "placeholderblock.1.0.3.nupkg.sha512"
     }
   }
 }

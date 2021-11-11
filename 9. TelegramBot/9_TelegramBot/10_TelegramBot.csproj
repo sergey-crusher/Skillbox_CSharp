@@ -1,0 +1,44 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>_10_TelegramBot</RootNamespace>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\close.gif" />
+    <None Remove="Resources\maximized.gif" />
+    <None Remove="Resources\menu.gif" />
+    <None Remove="Resources\minimize.gif" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="PlaceholderBlock" Version="1.0.3" />
+    <PackageReference Include="Telegram.Bot" Version="16.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\close.gif" />
+    <Resource Include="Resources\maximized.gif" />
+    <Resource Include="Resources\menu.gif" />
+    <Resource Include="Resources\minimize.gif" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Settings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
+</Project>

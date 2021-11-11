@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace _9_TelegramBot
+namespace _10_TelegramBot
 {
     /// <summary>
     /// Interaction logic for App.xaml
